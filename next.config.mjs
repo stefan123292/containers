@@ -3,6 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ['three'],
   images: {
+    unoptimized: true, // Required for Netlify free tier deployment
     remotePatterns: [
       {
         protocol: 'https',
