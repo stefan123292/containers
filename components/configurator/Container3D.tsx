@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Mesh } from 'three';
 import { useConfiguratorStore } from '@/lib/store/configuratorStore';
+import type { Door, Window as ContainerWindow } from '@/types/configurator';
 
 interface Container3DProps {
   autoRotate?: boolean;
@@ -91,13 +92,18 @@ export function Container3D({ autoRotate = false }: Container3DProps) {
 }
 
 // Door component
-function Door3D({ door, containerDimensions }: any) {
+interface Door3DProps {
+  door: Door;
+  containerDimensions: { width: number; height: number; depth: number };
+}
+
+function Door3D({ door, containerDimensions }: Door3DProps) {
   const doorDimensions = {
     standard: { width: 0.9, height: 2.0 },
     double: { width: 1.8, height: 2.0 },
     roller: { width: 2.4, height: 2.2 },
     glass: { width: 0.9, height: 2.0 },
-  }[door.type];
+  }[door.type] || { width: 0.9, height: 2.0 };
   
   const wallPosition = getWallPosition(door.wall, containerDimensions);
   
@@ -124,12 +130,17 @@ function Door3D({ door, containerDimensions }: any) {
 }
 
 // Window component
-function Window3D({ window, containerDimensions }: any) {
+interface Window3DProps {
+  window: ContainerWindow;
+  containerDimensions: { width: number; height: number; depth: number };
+}
+
+function Window3D({ window, containerDimensions }: Window3DProps) {
   const windowDimensions = {
     small: { width: 0.6, height: 0.5 },
     medium: { width: 1.0, height: 0.8 },
     large: { width: 1.5, height: 1.2 },
-  }[window.size];
+  }[window.size] || { width: 1.0, height: 0.8 };
   
   const wallPosition = getWallPosition(window.wall, containerDimensions);
   
@@ -157,7 +168,7 @@ function Window3D({ window, containerDimensions }: any) {
 }
 
 // Helper function to get wall position
-function getWallPosition(wall: string, dimensions: any) {
+function getWallPosition(wall: string, dimensions: { width: number; height: number; depth: number }) {
   switch (wall) {
     case 'front':
       return { x: 0, z: dimensions.depth / 2 };
