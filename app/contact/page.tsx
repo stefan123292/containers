@@ -222,14 +222,68 @@ export default function ContactPage() {
       <section className="py-16 bg-industrial-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="bg-industrial-300 rounded-2xl overflow-hidden" style={{ height: '400px' }}>
-              {/* Placeholder for Google Maps - Replace with actual Google Maps embed */}
-              <div className="w-full h-full flex items-center justify-center text-industrial-600">
-                <div className="text-center">
-                  <MapPin className="w-12 h-12 mx-auto mb-2" />
-                  <p>Google Maps will be embedded here</p>
-                  <p className="text-sm">123 Industrial Park Ave, New York, NY 10001</p>
-                </div>
+            {/* Map Header */}
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-display font-bold text-industrial-900 mb-4">
+                Visit Our Location
+              </h2>
+              <p className="text-lg text-industrial-600 mb-6">
+                Come see our container showroom and discuss your project in person
+              </p>
+              <a
+                href="https://www.google.com/maps/place/St.+Anthony%E2%80%99s+Church/@44.4303973,26.1019462,18z/data=!4m6!3m5!1s0x40b1ff3e31e93745:0x429b14c5aaab2df1!8m2!3d44.4301036!4d26.1020425!16s%2Fg%2F1hfbhn8sm?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-colors shadow-lg"
+              >
+                <MapPin className="w-5 h-5" />
+                Get Directions & Leave a Review ⭐
+              </a>
+            </div>
+
+            {/* Google Maps Embed */}
+            <div className="rounded-2xl overflow-hidden shadow-xl border border-industrial-200" style={{ height: '500px' }}>
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1424.5673944487808!2d26.101946175571584!3d44.43039726076679!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff3e31e93745%3A0x429b14c5aaab2df1!2sSt.%20Anthony%E2%80%99s%20Church!5e0!3m2!1sen!2sro!4v1763372619800!5m2!1sen!2sro" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="ModularBox Location - St. Anthony's Church"
+              />
+            </div>
+
+            {/* Location Details */}
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-white p-6 rounded-xl shadow-sm text-center">
+                <MapPin className="w-8 h-8 text-primary mx-auto mb-3" />
+                <h3 className="font-semibold mb-2">Address</h3>
+                <p className="text-sm text-industrial-600">
+                  St. Anthony&apos;s Church Area<br />
+                  Bucharest, Romania
+                </p>
+              </div>
+              <div className="bg-white p-6 rounded-xl shadow-sm text-center">
+                <svg className="w-8 h-8 text-primary mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3 className="font-semibold mb-2">Working Hours</h3>
+                <p className="text-sm text-industrial-600">
+                  Mon - Fri: 8:00 AM - 6:00 PM<br />
+                  Sat: 9:00 AM - 4:00 PM
+                </p>
+              </div>
+              <div className="bg-white p-6 rounded-xl shadow-sm text-center">
+                <svg className="w-8 h-8 text-primary mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <h3 className="font-semibold mb-2">Free Parking</h3>
+                <p className="text-sm text-industrial-600">
+                  Ample parking space<br />
+                  available for visitors
+                </p>
               </div>
             </div>
           </div>
