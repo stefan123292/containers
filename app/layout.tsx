@@ -3,7 +3,8 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
+import { FloatingActions } from "@/components/layout/FloatingActions";
+import { ReviewPrompt } from "@/components/layout/ReviewPrompt";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -34,7 +35,8 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <WhatsAppButton />
+        <FloatingActions />
+        <ReviewPrompt />
       </body>
     </html>
   );

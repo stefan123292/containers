@@ -1,159 +1,358 @@
 import Link from 'next/link';
-import { Home, Briefcase, Droplet, Snowflake, Package, Sparkles } from 'lucide-react';
+import Image from 'next/image';
+import { ShoppingCart, Eye, Star, ArrowRight } from 'lucide-react';
+
+const products = [
+  {
+    id: 'living-20ft',
+    name: 'Living Container 20ft',
+    category: 'living',
+    price: 8500,
+    oldPrice: 9500,
+    rating: 4.8,
+    reviews: 24,
+    image: '/images/containers/20ft-anthracite-front.jpg',
+    badge: 'Popular',
+    features: ['Full Insulation', 'Kitchen Ready', 'Bathroom Included', 'Climate Control'],
+    inStock: true,
+  },
+  {
+    id: 'living-40ft',
+    name: 'Living Container 40ft',
+    category: 'living',
+    price: 14500,
+    rating: 4.9,
+    reviews: 18,
+    image: '/images/containers/40ft-anthracite-front.jpg',
+    badge: 'Best Seller',
+    features: ['2 Bedrooms', 'Full Kitchen', 'Bathroom', 'Solar Ready'],
+    inStock: true,
+  },
+  {
+    id: 'office-20ft',
+    name: 'Office Container 20ft',
+    category: 'office',
+    price: 7200,
+    rating: 4.7,
+    reviews: 31,
+    image: '/images/containers/20ft-white-front.jpg',
+    features: ['Network Cabling', 'HVAC System', 'Large Windows', 'Professional Finish'],
+    inStock: true,
+  },
+  {
+    id: 'office-40ft',
+    name: 'Office Container 40ft',
+    category: 'office',
+    price: 12800,
+    rating: 4.8,
+    reviews: 22,
+    image: '/images/containers/40ft-white-front.jpg',
+    badge: 'New',
+    features: ['Open Plan', '8 Workstations', 'Meeting Room', 'High-Speed Ready'],
+    inStock: true,
+  },
+  {
+    id: 'storage-20ft',
+    name: 'Storage Container 20ft',
+    category: 'storage',
+    price: 3500,
+    oldPrice: 4000,
+    rating: 4.6,
+    reviews: 45,
+    image: '/images/containers/20ft-black-front.jpg',
+    features: ['Lockable Doors', 'Weather-proof', 'Ventilation', 'Easy Access'],
+    inStock: true,
+  },
+  {
+    id: 'storage-40ft',
+    name: 'Storage Container 40ft',
+    category: 'storage',
+    price: 6200,
+    rating: 4.7,
+    reviews: 38,
+    image: '/images/containers/40ft-black-front.jpg',
+    features: ['Double Capacity', 'Security Locks', 'Reinforced', 'Ground Level'],
+    inStock: true,
+  },
+  {
+    id: 'custom-20ft',
+    name: 'Custom Container 20ft',
+    category: 'custom',
+    price: 9800,
+    rating: 5.0,
+    reviews: 12,
+    image: '/images/containers/20ft-orange-front.jpg',
+    badge: 'Customizable',
+    features: ['Unlimited Options', 'Expert Design', 'Any Purpose', 'Full Support'],
+    inStock: true,
+  },
+  {
+    id: 'custom-40ft',
+    name: 'Custom Container 40ft',
+    category: 'custom',
+    price: 17500,
+    rating: 5.0,
+    reviews: 9,
+    image: '/images/containers/40ft-hc-anthracite-front.jpg',
+    badge: 'Premium',
+    features: ['High Cube', 'Bespoke Design', 'Premium Finish', 'Project Manager'],
+    inStock: true,
+  },
+];
 
 const categories = [
-  {
-    id: 'living',
-    name: 'Living Containers',
-    icon: Home,
-    description: 'Comfortable residential spaces perfect for guest houses, vacation homes, or permanent residences.',
-    features: ['Full insulation', 'Kitchen & bathroom', 'Electrical wiring', 'Climate control ready'],
-  },
-  {
-    id: 'office',
-    name: 'Office Containers',
-    icon: Briefcase,
-    description: 'Modern workspaces designed for productivity and comfort.',
-    features: ['Network cabling', 'HVAC system', 'Multiple windows', 'Professional finish'],
-  },
-  {
-    id: 'sanitary',
-    name: 'Sanitary Units',
-    icon: Droplet,
-    description: 'Complete bathroom and shower facilities for any location.',
-    features: ['Plumbing ready', 'Water heater', 'Ventilation', 'Durable fixtures'],
-  },
-  {
-    id: 'refrigerated',
-    name: 'Refrigerated',
-    icon: Snowflake,
-    description: 'Temperature-controlled storage for food, pharmaceuticals, and more.',
-    features: ['Adjustable temp', 'Insulated walls', 'Power efficient', 'Digital controls'],
-  },
-  {
-    id: 'storage',
-    name: 'Storage',
-    icon: Package,
-    description: 'Secure and weather-resistant storage for equipment and inventory.',
-    features: ['Lockable doors', 'Weather-proof', 'Various sizes', 'Easy access'],
-  },
-  {
-    id: 'custom',
-    name: 'Custom Modules',
-    icon: Sparkles,
-    description: 'Tailored solutions designed specifically for your unique requirements.',
-    features: ['Unlimited options', 'Expert design', 'Any purpose', 'Full customization'],
-  },
+  { id: 'all', name: 'All Products', count: 8 },
+  { id: 'living', name: 'Living', count: 2 },
+  { id: 'office', name: 'Office', count: 2 },
+  { id: 'storage', name: 'Storage', count: 2 },
+  { id: 'custom', name: 'Custom', count: 2 },
 ];
 
 export default function ProductsPage() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-industrial-900 to-industrial-800 py-20">
+    <div className="min-h-screen bg-industrial-50">
+      {/* Hero Banner */}
+      <section className="relative bg-gradient-to-br from-industrial-900 to-industrial-800 py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-5xl font-display font-bold text-white mb-6">
-              Our Products
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full text-primary text-sm font-medium mb-4">
+              <Star className="w-4 h-4 fill-primary" />
+              Rated 4.8/5 by 200+ customers
+            </div>
+            <h1 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">
+              Premium Container Solutions
             </h1>
-            <p className="text-xl text-industrial-300">
-              Explore our comprehensive range of modular container solutions. 
-              Each category is fully customizable to meet your specific needs.
+            <p className="text-xl text-industrial-300 mb-6">
+              Browse our selection of high-quality modular containers. 
+              Each unit can be customized to your exact specifications.
             </p>
+            <div className="flex flex-wrap gap-4">
+              <div className="flex items-center gap-2 text-industrial-300">
+                <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                Free Consultation
+              </div>
+              <div className="flex items-center gap-2 text-industrial-300">
+                <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                5 Year Warranty
+              </div>
+              <div className="flex items-center gap-2 text-industrial-300">
+                <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                Fast Delivery
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Categories */}
-      <section className="py-16">
+      {/* Categories Filter */}
+      <section className="sticky top-28 z-40 bg-white border-b border-industrial-200 shadow-sm">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex gap-2 overflow-x-auto">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                className="px-4 py-2 rounded-lg font-medium text-sm whitespace-nowrap transition-all hover:bg-industrial-100 border border-industrial-200 hover:border-primary hover:text-primary"
+              >
+                {cat.name} ({cat.count})
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Products Grid */}
+      <section className="py-12">
         <div className="container mx-auto px-4">
-          <div className="space-y-12">
-            {categories.map((category) => {
-              const Icon = category.icon;
-              return (
-                <div
-                  key={category.id}
-                  className="bg-white border border-industrial-200 rounded-2xl p-8 hover:shadow-xl transition-all"
-                >
-                  <div className="flex flex-col md:flex-row gap-8">
-                    {/* Icon & Title */}
-                    <div className="md:w-1/3">
-                      <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-                        <Icon className="w-8 h-8 text-primary" />
-                      </div>
-                      <h2 className="text-3xl font-display font-bold text-industrial-900 mb-3">
-                        {category.name}
-                      </h2>
-                      <p className="text-industrial-600 mb-6">
-                        {category.description}
-                      </p>
-                      <Link
-                        href={`/configurator?category=${category.id}`}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-colors"
-                      >
-                        Configure Now
-                      </Link>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {products.map((product) => (
+              <div
+                key={product.id}
+                className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-industrial-100"
+              >
+                {/* Product Image */}
+                <div className="relative aspect-square overflow-hidden bg-industrial-100">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  
+                  {/* Discount Badge */}
+                  {product.oldPrice && (
+                    <div className="absolute top-3 left-3 px-3 py-1 bg-red-500 text-white text-xs font-semibold rounded-full shadow-lg">
+                      -{Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)}% OFF
                     </div>
-
-                    {/* Features */}
-                    <div className="md:w-2/3">
-                      <h3 className="font-semibold text-lg mb-4 text-industrial-900">Key Features</h3>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {category.features.map((feature, index) => (
-                          <div
-                            key={index}
-                            className="flex items-center gap-3 p-4 bg-industrial-50 rounded-lg"
-                          >
-                            <svg className="w-5 h-5 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                            </svg>
-                            <span className="text-industrial-700">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Additional info */}
-                      <div className="mt-6 p-4 bg-primary/5 border border-primary/20 rounded-lg">
-                        <p className="text-sm text-industrial-700">
-                          <strong className="text-primary">Starting from $3,500</strong> - Final price depends on size, features, and customization. 
-                          Use our configurator for an instant quote.
-                        </p>
-                      </div>
+                  )}
+                  
+                  {/* Badge */}
+                  {product.badge && !product.oldPrice && (
+                    <div className="absolute top-3 left-3 px-3 py-1 bg-primary text-white text-xs font-semibold rounded-full shadow-lg">
+                      {product.badge}
                     </div>
+                  )}
+
+                  {/* Quick Actions */}
+                  <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button className="p-2 bg-white rounded-lg shadow-lg hover:bg-primary hover:text-white transition-colors">
+                      <Eye className="w-4 h-4" />
+                    </button>
+                  </div>
+
+                  {/* Stock Status */}
+                  {product.inStock && (
+                    <div className="absolute bottom-3 left-3 px-3 py-1 bg-green-500 text-white text-xs font-semibold rounded-full">
+                      In Stock
+                    </div>
+                  )}
+                </div>
+
+                {/* Product Info */}
+                <div className="p-5">
+                  {/* Category */}
+                  <div className="text-xs font-medium text-primary uppercase tracking-wide mb-2">
+                    {product.category}
+                  </div>
+
+                  {/* Product Name */}
+                  <h3 className="text-lg font-semibold text-industrial-900 mb-2 group-hover:text-primary transition-colors">
+                    {product.name}
+                  </h3>
+
+                  {/* Rating */}
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex gap-0.5">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`w-4 h-4 ${
+                            i < Math.floor(product.rating)
+                              ? 'text-yellow-400 fill-yellow-400'
+                              : 'text-industrial-300'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                    <span className="text-sm text-industrial-600">
+                      {product.rating} ({product.reviews})
+                    </span>
+                  </div>
+
+                  {/* Features */}
+                  <ul className="space-y-1.5 mb-4">
+                    {product.features.slice(0, 3).map((feature, index) => (
+                      <li key={index} className="flex items-center gap-2 text-sm text-industrial-700">
+                        <svg className="w-4 h-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Price */}
+                  <div className="flex items-baseline gap-2 mb-4">
+                    <span className="text-2xl font-bold text-industrial-900">
+                      ${product.price.toLocaleString()}
+                    </span>
+                    {product.oldPrice && (
+                      <span className="text-sm text-industrial-500 line-through">
+                        ${product.oldPrice.toLocaleString()}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Actions */}
+                  <div className="flex gap-2">
+                    <Link
+                      href="/configurator"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-colors"
+                    >
+                      <ShoppingCart className="w-4 h-4" />
+                      Configure
+                    </Link>
+                    <Link
+                      href={`/products/${product.id}`}
+                      className="px-4 py-2.5 border-2 border-industrial-200 rounded-lg font-semibold hover:border-primary hover:text-primary transition-colors"
+                    >
+                      <Eye className="w-4 h-4" />
+                    </Link>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-industrial-50">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-display font-bold text-industrial-900 mb-4">
-            Not Sure Which One Is Right for You?
-          </h2>
-          <p className="text-lg text-industrial-600 mb-8 max-w-2xl mx-auto">
-            Our experts are here to help you choose the perfect container solution for your needs.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-colors"
-            >
-              Contact Our Team
-            </Link>
-            <Link
-              href="/configurator"
-              className="px-8 py-4 bg-white text-primary border-2 border-primary rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors"
-            >
-              Try the Configurator
-            </Link>
+      {/* Why Choose Us */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 className="font-semibold mb-2">Premium Quality</h3>
+              <p className="text-sm text-industrial-600">Built to last with high-grade materials</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="font-semibold mb-2">Fast Delivery</h3>
+              <p className="text-sm text-industrial-600">Quick turnaround from order to install</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 className="font-semibold mb-2">5 Year Warranty</h3>
+              <p className="text-sm text-industrial-600">Complete peace of mind guarantee</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              </div>
+              <h3 className="font-semibold mb-2">24/7 Support</h3>
+              <p className="text-sm text-industrial-600">Always here to help you</p>
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-br from-industrial-900 to-industrial-800">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-display font-bold text-white mb-4">
+            Can&apos;t Find What You&apos;re Looking For?
+          </h2>
+          <p className="text-xl text-industrial-300 mb-8 max-w-2xl mx-auto">
+            Every container can be fully customized. Use our 3D configurator to design your perfect solution.
+          </p>
+          <Link
+            href="/configurator"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-lg font-semibold text-lg hover:bg-primary-dark transition-colors shadow-lg"
+          >
+            Start Custom Configuration
+            <ArrowRight className="w-5 h-5" />
+          </Link>
         </div>
       </section>
     </div>
   );
 }
-
