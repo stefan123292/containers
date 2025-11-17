@@ -36,7 +36,7 @@ export default function ContactPage() {
               Get In Touch
             </h1>
             <p className="text-xl text-industrial-300">
-              Have questions? We're here to help. Reach out to our team and we'll 
+              Have questions? We&apos;re here to help. Reach out to our team and we&apos;ll 
               respond as soon as possible.
             </p>
           </div>

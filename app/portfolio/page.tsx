@@ -68,8 +68,8 @@ export default function PortfolioPage() {
               Our Portfolio
             </h1>
             <p className="text-xl text-industrial-300">
-              Explore our completed projects and see what's possible with modular containers. 
-              From homes to offices, we've built it all.
+              Explore our completed projects and see what&apos;s possible with modular containers. 
+              From homes to offices, we&apos;ve built it all.
             </p>
           </div>
         </div>

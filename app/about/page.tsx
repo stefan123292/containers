@@ -34,10 +34,10 @@ export default function AboutPage() {
               <p className="mb-4">
                 Today, we combine cutting-edge 3D technology with traditional craftsmanship 
                 to deliver containers that are not just functional, but beautifully designed 
-                and perfectly suited to each client's unique needs.
+                and perfectly suited to each client&apos;s unique needs.
               </p>
               <p>
-                With over 500 completed projects and a commitment to sustainability, we're 
+                With over 500 completed projects and a commitment to sustainability, we&apos;re 
                 proud to be at the forefront of the modular construction revolution.
               </p>
             </div>
@@ -133,7 +133,7 @@ export default function AboutPage() {
             Ready to Start Your Project?
           </h2>
           <p className="text-xl text-industrial-300 mb-8">
-            Let's bring your vision to life with our custom container solutions.
+            Let&apos;s bring your vision to life with our custom container solutions.
           </p>
           <Link
             href="/configurator"

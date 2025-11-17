@@ -37,7 +37,7 @@ export function TestimonialsSection() {
             What Our Clients Say
           </h2>
           <p className="text-lg text-industrial-600">
-            Don't just take our word for it - hear from some of our satisfied customers.
+            Don&apos;t just take our word for it - hear from some of our satisfied customers.
           </p>
         </div>
 
@@ -62,7 +62,7 @@ export function TestimonialsSection() {
 
               {/* Content */}
               <p className="text-industrial-700 leading-relaxed mb-6 relative z-10">
-                "{testimonial.content}"
+                &ldquo;{testimonial.content}&rdquo;
               </p>
 
               {/* Author */}
