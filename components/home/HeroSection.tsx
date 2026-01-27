@@ -12,12 +12,23 @@ export function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
+        {/* Mobile - Vertical Image */}
+        <Image
+          src="/images/container-vertical.jpg"
+          alt="Modular Container Background"
+          fill
+          priority
+          className="object-cover object-center md:hidden"
+          quality={90}
+          sizes="100vw"
+        />
+        {/* Desktop - Horizontal Image */}
         <Image
           src="/images/container.jpg"
           alt="Modular Container Background"
           fill
           priority
-          className="object-cover"
+          className="hidden md:block object-cover"
           quality={90}
         />
         {/* Dark overlay for better text readability */}
@@ -28,7 +39,7 @@ export function HeroSection() {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse delay-1000" />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 pt-8 md:pt-0">
         <div className="max-w-4xl mx-auto text-center">
 
           {/* Heading */}
