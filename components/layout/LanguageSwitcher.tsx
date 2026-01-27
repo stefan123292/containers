@@ -7,7 +7,7 @@ import type { Locale } from '@/lib/translations';
 
 const languages: { code: Locale; name: string; flag: string }[] = [
   { code: 'ro', name: 'Română', flag: '🇷🇴' },
-  { code: 'en', name: 'English', flag: '🇬🇧' },
+  { code: 'en', name: 'English', flag: 'en' },
 ];
 
 export function LanguageSwitcher() {
@@ -32,11 +32,11 @@ export function LanguageSwitcher() {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-industrial-800 hover:bg-industrial-700 text-industrial-200 transition-colors"
+        className="flex items-center gap-1.5 md:gap-2 px-2 md:px-3 py-2 rounded-lg bg-industrial-800 hover:bg-industrial-700 text-industrial-200 transition-colors"
         aria-label="Switch language"
       >
-        <Globe className="w-4 h-4" />
-        <span className="hidden sm:inline">{currentLanguage.flag}</span>
+        <Globe className="w-4 h-4 md:w-4 md:h-4" />
+        <span className="text-base md:text-lg">{currentLanguage.flag}</span>
         <span className="hidden md:inline text-sm">{currentLanguage.name}</span>
       </button>
 

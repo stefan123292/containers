@@ -40,7 +40,7 @@ export default async function LocaleLayout({
     <html lang={locale} className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="font-sans">
         <Header />
-        <main className="pt-28">
+        <main className="pt-16 md:pt-28">
           {children}
         </main>
         <Footer />
