@@ -1,0 +1,244 @@
+{
+  "common": {
+    "home": "Acasă",
+    "configurator": "Configurator",
+    "products": "Produse",
+    "portfolio": "Portofoliu",
+    "about": "Despre noi",
+    "contact": "Contact",
+    "getStarted": "Începe configurarea",
+    "explore": "Explorează",
+    "readMore": "Citește mai mult",
+    "learnMore": "Află mai mult",
+    "callUs": "Sună-ne acum",
+    "email": "Email",
+    "phone": "Telefon",
+    "address": "Adresă"
+  },
+  "hero": {
+    "title": "Construește-ți spațiul de care ai nevoie",
+    "subtitle": "Container cu container",
+    "description": "Proiectează, modifică și personalizează containerul modular dorit cu configuratorul nostru integrat, adaptat pentru toate nevoile tale. Perfect pentru spații locative, birouri, cabine de pază, depozite, grupuri sanitare și multe alte proiecte individuale.",
+    "cta": "Începe configurarea",
+    "projectsCompleted": "Proiecte finalizate",
+    "satisfiedClients": "Clienți satisfăcuți",
+    "yearsExperience": "Ani experiență",
+    "supportAvailable": "Suport disponibil"
+  },
+  "features": {
+    "title": "De ce să alegi Boxpert?",
+    "subtitle": "Pentru că transformăm ideile tale în spații funcționale, moderne și durabile.",
+    "cta": "Începe configurarea!",
+    "items": {
+      "preview": {
+        "title": "3D Real-Time Preview",
+        "description": "Configurarea și ofertă în timp real (cu excepția personalizărilor care nu se regăsesc în listele standard) Crează containerul de care ai nevoie, cu toate elementele necesare proiectului tău si obține o oferta în timp real!"
+      },
+      "customization": {
+        "title": "Personalizare rapidă",
+        "description": "Primești rapid un termen de livrare, opțiuni de livrare sau montare la fața locului, suport tehnic și răspunsuri la orice întrebare legată de proiectul tău!"
+      },
+      "quality": {
+        "title": "Calitate premium",
+        "description": "12 luni de garanție pentru toate proiectele. Transparență totală la materialele folosite, primiți fișa tehnică a fiecarui spațiu executat de noi!"
+      },
+      "customizable": {
+        "title": "Personalizare completă",
+        "description": "Puteți personaliza containerele conform cerințelor proiectului dumneavoastră sau puteți alege unul din containerele noastre standard care le avem pe stoc și pot fi livrate imediat."
+      },
+      "delivery": {
+        "title": "Livrare rapidă",
+        "description": "Raspuns rapid la fiecare cerere și suport tehnic în cazurile când nu regăsiți elementele care le doriți, în lista noastră de opțiuni. Puteți lua legatura cu noi prin mail, Whatsapp sau sa ne sunați și vă ajutăm cu orice întrebare legată de proiectul dorit."
+      },
+      "pricing": {
+        "title": "Prețuri transparente",
+        "description": "Cele mai mici prețuri de pe piața din România. Transparență în oferta de preț, fără modificari neașteptate. Oferta care o vedeți pe site este oferta finală, oferta variază doar în cazul în care doriți sa adaugați alte elemente extra."
+      }
+    }
+  },
+  "categories": {
+    "title": "Explorează categoriile noastre",
+    "subtitle": "De la rezidențial la comercial, vă oferim o gama vastă de soluții adeptate tuturor nevoilor.",
+    "items": {
+      "living": {
+        "name": "Containere locative",
+        "description": "Containere care pot fi locuite, având toate utilitățile gata de a fi conectate, pot înlocui un spațiu de locuit clasic."
+      },
+      "office": {
+        "name": "Containere birouri",
+        "description": "Spații moderne și economice pentru afacerea ta."
+      },
+      "sanitary": {
+        "name": "Unități sanitare",
+        "description": "Toalete, bai si dușuri complete."
+      },
+      "storage": {
+        "name": "Spații de depozitare",
+        "description": "Depozitari pentru orice nevoi"
+      },
+      "custom": {
+        "name": "Modele personalizate",
+        "description": "Modificări diverse pentru necesități unice"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Ce spun clienții noștri despre noi?",
+    "subtitle": "Nu îți spunem să ne crezi pe cuvânt, dar îți sugerăm să vezi ce spun unii dintre clienții noștri!",
+    "warranty": "Garanție",
+    "year": "1 An",
+    "bbbRating": "Rating BBB",
+    "epaCompliant": "Conform EPA"
+  },
+  "cta": {
+    "title": "Gata să construiești containerul tău personalizat?",
+    "subtitle": "Începe să proiectezi cu configuratorul nostru 3D sau vorbește cu experții noștri pentru a discuta cerințele tale specifice.",
+    "launchConfigurator": "Lansează configuratorul",
+    "callUs": "Sună-ne acum",
+    "freeConsultation": "Consultare gratuită",
+    "noObligationQuote": "Ofertă fără obligații",
+    "fastTurnaround": "Livrare rapidă"
+  },
+  "header": {
+    "tagline": "Experți în containere modulare"
+  },
+  "footer": {
+    "tagline": "Containere personalizate",
+    "description": "Furnizor de top al containerelor modulare personalizabile pentru aplicații rezidențiale, comerciale și industriale.",
+    "quickLinks": "Link-uri rapide",
+    "ourProducts": "Produsele noastre",
+    "contactUs": "Contactează-ne",
+    "livingContainers": "Containere locative",
+    "officeContainers": "Containere birouri",
+    "sanitaryUnits": "Unități sanitare",
+    "refrigerated": "Refrigerate",
+    "storage": "Depozitare",
+    "customModules": "Module personalizate",
+    "faq": "Întrebări frecvente",
+    "blog": "Blog",
+    "allRightsReserved": "Toate drepturile rezervate",
+    "privacyPolicy": "Politica de confidențialitate",
+    "termsOfService": "Termeni și condiții",
+    "sitemap": "Hartă site"
+  },
+  "about": {
+    "title": "Despre Boxpert",
+    "subtitle": "Pionierii viitorului construcției modulare cu tehnologie inovatoare și meșteșug superior.",
+    "story": {
+      "title": "Povestea noastră",
+      "p1": "Fondată în 2008, Boxpert a început cu o misiune simplă: să revoluționeze modul în care oamenii gândesc construcția modulară. Ceea ce a început ca o operațiune mică cu câteva containere a crescut într-un furnizor de top al soluțiilor modulare personalizabile.",
+      "p2": "Astăzi, combinăm tehnologia 3D de ultimă generație cu meșteșugul tradițional pentru a livra containere care nu sunt doar funcționale, ci și frumos proiectate și perfect adaptate nevoilor unice ale fiecărui client.",
+      "p3": "Cu peste 500 de proiecte finalizate și un angajament față de durabilitate, suntem mândri să fim în fruntea revoluției construcției modulare."
+    },
+    "values": {
+      "title": "Valorile noastre",
+      "quality": {
+        "title": "Calitate în primul rând",
+        "description": "Fiecare container este construit conform celor mai înalte standarde"
+      },
+      "customer": {
+        "title": "Orientare către client",
+        "description": "Viziunea ta ghidează tot ce creăm"
+      },
+      "sustainability": {
+        "title": "Durabilitate",
+        "description": "Soluții ecologice pentru un viitor mai bun"
+      },
+      "innovation": {
+        "title": "Inovație",
+        "description": "Împingem limitele cu tehnologia"
+      }
+    },
+    "team": {
+      "title": "Echipa de conducere"
+    },
+    "cta": {
+      "title": "Gata să începi proiectul tău?",
+      "subtitle": "Să transformăm viziunea ta în realitate cu soluțiile noastre de containere personalizate.",
+      "button": "Începe configurarea"
+    }
+  },
+  "contact": {
+    "title": "Contactează-ne",
+    "subtitle": "Ai întrebări? Suntem aici să te ajutăm. Contactează echipa noastră și vom răspunde cât mai curând posibil.",
+    "contactInfo": "Informații de contact",
+    "phone": "Telefon",
+    "email": "Email",
+    "address": "Adresă",
+    "businessHours": "Program de lucru",
+    "sendMessage": "Trimite-ne un mesaj",
+    "fullName": "Nume complet *",
+    "emailAddress": "Adresa de email *",
+    "phoneNumber": "Număr de telefon",
+    "subject": "Subiect *",
+    "selectSubject": "Selectează un subiect",
+    "requestQuote": "Solicită ofertă",
+    "generalInquiry": "Întrebare generală",
+    "support": "Suport",
+    "customProject": "Proiect personalizat",
+    "message": "Mesaj *",
+    "messagePlaceholder": "Spune-ne despre proiectul tău...",
+    "send": "Trimite mesajul",
+    "visitLocation": "Vizitează locația noastră",
+    "locationSubtitle": "Vino să vezi showroom-ul nostru de containere și discută proiectul tău în persoană",
+    "getDirections": "Obține direcții și lasă o recenzie ⭐",
+    "workingHours": "Program de lucru",
+    "freeParking": "Parcare gratuită",
+    "parkingDescription": "Spațiu de parcare generos disponibil pentru vizitatori"
+  },
+  "products": {
+    "title": "Soluții Premium de Containere",
+    "subtitle": "Răsfoiește selecția noastră de containere modulare de înaltă calitate. Fiecare unitate poate fi personalizată conform specificațiilor tale exacte.",
+    "rated": "Evaluat 4.8/5 de peste 200 de clienți",
+    "freeConsultation": "Consultare gratuită",
+    "warranty": "Garanție 1 an",
+    "fastDelivery": "Livrare rapidă",
+    "allProducts": "Toate produsele",
+    "inStock": "În stoc",
+    "configure": "Configurează",
+    "premiumQuality": "Calitate premium",
+    "premiumQualityDesc": "Construit să reziste cu materiale de înaltă calitate",
+    "fastDeliveryDesc": "Livrare rapidă de la comandă la instalare",
+    "warrantyDesc": "Garanție completă pentru liniștea ta",
+    "support24": "Suport 24/7",
+    "support24Desc": "Întotdeauna aici să te ajutăm",
+    "cantFind": "Nu găsești ce cauți?",
+    "cantFindDesc": "Fiecare container poate fi complet personalizat. Folosește configuratorul nostru 3D pentru a-ți proiecta soluția perfectă.",
+    "startCustom": "Începe configurarea personalizată"
+  },
+  "portfolio": {
+    "title": "Portofoliul nostru",
+    "subtitle": "Explorează proiectele noastre finalizate și vezi ce este posibil cu containerele modulare. De la case la birouri, am construit de toate.",
+    "projectsCompleted": "Proiecte finalizate",
+    "citiesServed": "Orașe deservite",
+    "satisfactionRate": "Rată de satisfacție",
+    "yearsExperience": "Ani experiență",
+    "readyToCreate": "Gata să-ți creezi propriul?",
+    "readyToCreateDesc": "Începe să-ți proiectezi soluția de containere personalizate astăzi cu configuratorul nostru interactiv 3D.",
+    "startConfiguring": "Începe configurarea"
+  },
+  "reviewPrompt": {
+    "title": "Te bucuri de serviciul nostru?",
+    "description": "Feedback-ul tău ne ajută să ne îmbunătățim și ajută și pe alții să ne găsească! Ai putea să ne lași o recenzie pe Google?",
+    "leaveReview": "Lasă o recenzie",
+    "maybeLater": "Poate mai târziu",
+    "close": "Închide"
+  },
+  "floatingActions": {
+    "leaveReview": "Lasă o recenzie",
+    "leaveReviewAria": "Lasă-ne o recenzie pe Google",
+    "callUs": "Sună-ne acum!",
+    "callUsAria": "Sună-ne",
+    "chatWithUs": "Chat cu noi!",
+    "chatWithUsAria": "Contactează-ne pe WhatsApp",
+    "whatsappMessage": "Bună! Aș dori să aflu mai multe despre soluțiile voastre de containere."
+  },
+  "loading": {
+    "default": "Se încarcă...",
+    "configurator": "Se încarcă configuratorul...",
+    "products": "Se încarcă produsele...",
+    "portfolio": "Se încarcă portofoliul...",
+    "about": "Se încarcă pagina...",
+    "contact": "Se încarcă pagina de contact..."
+  }
+}

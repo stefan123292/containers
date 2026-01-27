@@ -1,7 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 import { ArrowRight, Phone } from 'lucide-react';
+import { useTranslations } from '@/hooks/useTranslations';
 
 export function CTASection() {
+  const { t, locale } = useTranslations();
+
   return (
     <section className="relative py-24 overflow-hidden">
       {/* Background */}
@@ -17,20 +22,19 @@ export function CTASection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
-            Ready to Build Your Custom Container?
+            {t('cta.title')}
           </h2>
           <p className="text-xl text-industrial-200 mb-12 max-w-2xl mx-auto">
-            Start designing with our 3D configurator or speak with our experts 
-            to discuss your specific requirements.
+            {t('cta.subtitle')}
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/configurator"
+              href={`/${locale}/configurator`}
               className="group px-8 py-4 bg-white text-primary rounded-lg font-semibold text-lg hover:bg-industrial-100 transition-all flex items-center gap-2 shadow-xl hover:scale-105"
             >
-              Launch Configurator
+              {t('cta.launchConfigurator')}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             
@@ -39,7 +43,7 @@ export function CTASection() {
               className="group px-8 py-4 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 rounded-lg font-semibold text-lg hover:bg-white/20 transition-all flex items-center gap-2"
             >
               <Phone className="w-5 h-5" />
-              Call Us Now
+              {t('cta.callUs')}
             </a>
           </div>
 
@@ -49,19 +53,19 @@ export function CTASection() {
               <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              <span>Free Consultation</span>
+              <span>{t('cta.freeConsultation')}</span>
             </div>
             <div className="flex items-center gap-2">
               <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              <span>No Obligation Quote</span>
+              <span>{t('cta.noObligationQuote')}</span>
             </div>
             <div className="flex items-center gap-2">
               <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              <span>Fast Turnaround</span>
+              <span>{t('cta.fastTurnaround')}</span>
             </div>
           </div>
         </div>

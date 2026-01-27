@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { X, Star } from 'lucide-react';
+import { useTranslations } from '@/hooks/useTranslations';
 
 export function ReviewPrompt() {
+  const { t } = useTranslations();
   const [showPrompt, setShowPrompt] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
@@ -44,7 +46,7 @@ export function ReviewPrompt() {
         <button
           onClick={handleDismiss}
           className="absolute top-4 right-4 p-2 hover:bg-industrial-100 rounded-full transition-colors"
-          aria-label="Close"
+          aria-label={t('reviewPrompt.close')}
         >
           <X className="w-5 h-5 text-industrial-600" />
         </button>
@@ -61,11 +63,10 @@ export function ReviewPrompt() {
 
         {/* Content */}
         <h3 className="text-2xl font-display font-bold text-industrial-900 text-center mb-3">
-          Enjoying Our Service?
+          {t('reviewPrompt.title')}
         </h3>
         <p className="text-industrial-600 text-center mb-6">
-          Your feedback helps us improve and helps others find us! 
-          Would you take a moment to leave us a review on Google?
+          {t('reviewPrompt.description')}
         </p>
 
         {/* Buttons */}
@@ -75,13 +76,13 @@ export function ReviewPrompt() {
             className="w-full py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-colors flex items-center justify-center gap-2"
           >
             <Star className="w-5 h-5" fill="currentColor" />
-            Leave a Review
+            {t('reviewPrompt.leaveReview')}
           </button>
           <button
             onClick={handleDismiss}
             className="w-full py-3 text-industrial-600 hover:text-industrial-900 font-medium transition-colors"
           >
-            Maybe Later
+            {t('reviewPrompt.maybeLater')}
           </button>
         </div>
       </div>

@@ -1,7 +1,15 @@
 import { Award, Users, Globe, Zap } from 'lucide-react';
 import Link from 'next/link';
+import { getServerTranslations } from '@/lib/server-translations';
+import type { Locale } from '@/lib/translations';
 
-export default function AboutPage() {
+export default async function AboutPage({
+  params,
+}: {
+  params: { locale: Locale };
+}) {
+  const t = await getServerTranslations(params.locale);
+  
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
@@ -9,11 +17,10 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-5xl font-display font-bold text-white mb-6">
-              About ModularBox
+              {t('about.title')}
             </h1>
             <p className="text-xl text-industrial-300">
-              Pioneering the future of modular construction with innovative 
-              technology and superior craftsmanship.
+              {t('about.subtitle')}
             </p>
           </div>
         </div>
@@ -23,22 +30,16 @@ export default function AboutPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-display font-bold text-industrial-900 mb-6">Our Story</h2>
+            <h2 className="text-3xl font-display font-bold text-industrial-900 mb-6">{t('about.story.title')}</h2>
             <div className="prose prose-lg max-w-none text-industrial-700">
               <p className="mb-4">
-                Founded in 2008, ModularBox began with a simple mission: to revolutionize 
-                the way people think about modular construction. What started as a small 
-                operation with a handful of containers has grown into a leading provider 
-                of customizable modular solutions.
+                {t('about.story.p1')}
               </p>
               <p className="mb-4">
-                Today, we combine cutting-edge 3D technology with traditional craftsmanship 
-                to deliver containers that are not just functional, but beautifully designed 
-                and perfectly suited to each client&apos;s unique needs.
+                {t('about.story.p2')}
               </p>
               <p>
-                With over 500 completed projects and a commitment to sustainability, we&apos;re 
-                proud to be at the forefront of the modular construction revolution.
+                {t('about.story.p3')}
               </p>
             </div>
           </div>
@@ -50,7 +51,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-display font-bold text-center text-industrial-900 mb-12">
-              Our Values
+              {t('about.values.title')}
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -58,9 +59,9 @@ export default function AboutPage() {
                 <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <Award className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Quality First</h3>
+                <h3 className="text-xl font-semibold mb-2">{t('about.values.quality.title')}</h3>
                 <p className="text-industrial-600">
-                  Every container is built to the highest standards
+                  {t('about.values.quality.description')}
                 </p>
               </div>
 
@@ -68,9 +69,9 @@ export default function AboutPage() {
                 <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <Users className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Customer Focus</h3>
+                <h3 className="text-xl font-semibold mb-2">{t('about.values.customer.title')}</h3>
                 <p className="text-industrial-600">
-                  Your vision guides everything we create
+                  {t('about.values.customer.description')}
                 </p>
               </div>
 
@@ -78,9 +79,9 @@ export default function AboutPage() {
                 <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <Globe className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Sustainability</h3>
+                <h3 className="text-xl font-semibold mb-2">{t('about.values.sustainability.title')}</h3>
                 <p className="text-industrial-600">
-                  Eco-friendly solutions for a better tomorrow
+                  {t('about.values.sustainability.description')}
                 </p>
               </div>
 
@@ -88,9 +89,9 @@ export default function AboutPage() {
                 <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <Zap className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Innovation</h3>
+                <h3 className="text-xl font-semibold mb-2">{t('about.values.innovation.title')}</h3>
                 <p className="text-industrial-600">
-                  Pushing boundaries with technology
+                  {t('about.values.innovation.description')}
                 </p>
               </div>
             </div>
@@ -103,7 +104,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-display font-bold text-center text-industrial-900 mb-12">
-              Leadership Team
+              {t('about.team.title')}
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -130,16 +131,16 @@ export default function AboutPage() {
       <section className="py-16 bg-gradient-to-br from-industrial-900 to-industrial-800">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-display font-bold text-white mb-4">
-            Ready to Start Your Project?
+            {t('about.cta.title')}
           </h2>
           <p className="text-xl text-industrial-300 mb-8">
-            Let&apos;s bring your vision to life with our custom container solutions.
+            {t('about.cta.subtitle')}
           </p>
           <Link
-            href="/configurator"
+            href={`/${params.locale}/configurator`}
             className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-colors"
           >
-            Start Configuring
+            {t('about.cta.button')}
           </Link>
         </div>
       </section>

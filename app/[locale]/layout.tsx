@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingActions } from "@/components/layout/FloatingActions";
 import { ReviewPrompt } from "@/components/layout/ReviewPrompt";
+import { locales, defaultLocale, type Locale } from "@/lib/translations";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -22,13 +23,21 @@ export const metadata: Metadata = {
   keywords: "modular containers, custom containers, 3D configurator, shipping containers, container homes, office containers",
 };
 
-export default function RootLayout({
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export default async function LocaleLayout({
   children,
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode;
-}>) {
+  params: { locale: Locale };
+}) {
+  const locale = params?.locale || defaultLocale;
+
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang={locale} className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="font-sans">
         <Header />
         <main className="pt-28">
@@ -41,4 +50,3 @@ export default function RootLayout({
     </html>
   );
 }
-

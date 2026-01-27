@@ -1,4 +1,7 @@
+'use client';
+
 import { Star, Quote } from 'lucide-react';
+import { useTranslations } from '@/hooks/useTranslations';
 
 const testimonials = [
   {
@@ -28,16 +31,18 @@ const testimonials = [
 ];
 
 export function TestimonialsSection() {
+  const { t } = useTranslations();
+
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-industrial-900 mb-6">
-            What Our Clients Say
+            {t('testimonials.title')}
           </h2>
           <p className="text-lg text-industrial-600">
-            Don&apos;t just take our word for it - hear from some of our satisfied customers.
+            {t('testimonials.subtitle')}
           </p>
         </div>
 
@@ -86,20 +91,16 @@ export function TestimonialsSection() {
         <div className="mt-16 pt-12 border-t border-industrial-200">
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60">
             <div className="text-center">
-              <div className="font-semibold text-industrial-900">ISO 9001</div>
-              <div className="text-sm text-industrial-600">Certified</div>
-            </div>
-            <div className="text-center">
-              <div className="font-semibold text-industrial-900">5 Year</div>
-              <div className="text-sm text-industrial-600">Warranty</div>
+              <div className="font-semibold text-industrial-900">{t('testimonials.year')}</div>
+              <div className="text-sm text-industrial-600">{t('testimonials.warranty')}</div>
             </div>
             <div className="text-center">
               <div className="font-semibold text-industrial-900">A+</div>
-              <div className="text-sm text-industrial-600">BBB Rating</div>
+              <div className="text-sm text-industrial-600">{t('testimonials.bbbRating')}</div>
             </div>
             <div className="text-center">
               <div className="font-semibold text-industrial-900">EPA</div>
-              <div className="text-sm text-industrial-600">Compliant</div>
+              <div className="text-sm text-industrial-600">{t('testimonials.epaCompliant')}</div>
             </div>
           </div>
         </div>
@@ -107,4 +108,3 @@ export function TestimonialsSection() {
     </section>
   );
 }
-

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ShoppingCart, Eye, Star, ArrowRight } from 'lucide-react';
+import { getServerTranslations } from '@/lib/server-translations';
+import type { Locale } from '@/lib/translations';
 
 const products = [
   {
@@ -100,15 +102,14 @@ const products = [
   },
 ];
 
-const categories = [
-  { id: 'all', name: 'All Products', count: 8 },
-  { id: 'living', name: 'Living', count: 2 },
-  { id: 'office', name: 'Office', count: 2 },
-  { id: 'storage', name: 'Storage', count: 2 },
-  { id: 'custom', name: 'Custom', count: 2 },
-];
 
-export default function ProductsPage() {
+export default async function ProductsPage({
+  params,
+}: {
+  params: { locale: Locale };
+}) {
+  const t = await getServerTranslations(params.locale);
+  
   return (
     <div className="min-h-screen bg-industrial-50">
       {/* Hero Banner */}
@@ -117,33 +118,32 @@ export default function ProductsPage() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full text-primary text-sm font-medium mb-4">
               <Star className="w-4 h-4 fill-primary" />
-              Rated 4.8/5 by 200+ customers
+              {t('products.rated')}
             </div>
             <h1 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">
-              Premium Container Solutions
+              {t('products.title')}
             </h1>
             <p className="text-xl text-industrial-300 mb-6">
-              Browse our selection of high-quality modular containers. 
-              Each unit can be customized to your exact specifications.
+              {t('products.subtitle')}
             </p>
             <div className="flex flex-wrap gap-4">
               <div className="flex items-center gap-2 text-industrial-300">
                 <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                Free Consultation
+                {t('products.freeConsultation')}
               </div>
               <div className="flex items-center gap-2 text-industrial-300">
                 <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                5 Year Warranty
+                {t('products.warranty')}
               </div>
               <div className="flex items-center gap-2 text-industrial-300">
                 <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                Fast Delivery
+                {t('products.fastDelivery')}
               </div>
             </div>
           </div>
@@ -154,7 +154,13 @@ export default function ProductsPage() {
       <section className="sticky top-28 z-40 bg-white border-b border-industrial-200 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex gap-2 overflow-x-auto">
-            {categories.map((cat) => (
+            {[
+              { id: 'all', name: t('products.allProducts'), count: 8 },
+              { id: 'living', name: t('categories.items.living.name'), count: 2 },
+              { id: 'office', name: t('categories.items.office.name'), count: 2 },
+              { id: 'storage', name: t('categories.items.storage.name'), count: 2 },
+              { id: 'custom', name: t('categories.items.custom.name'), count: 2 },
+            ].map((cat) => (
               <button
                 key={cat.id}
                 className="px-4 py-2 rounded-lg font-medium text-sm whitespace-nowrap transition-all hover:bg-industrial-100 border border-industrial-200 hover:border-primary hover:text-primary"
@@ -208,7 +214,7 @@ export default function ProductsPage() {
                   {/* Stock Status */}
                   {product.inStock && (
                     <div className="absolute bottom-3 left-3 px-3 py-1 bg-green-500 text-white text-xs font-semibold rounded-full">
-                      In Stock
+                      {t('products.inStock')}
                     </div>
                   )}
                 </div>
@@ -271,14 +277,14 @@ export default function ProductsPage() {
                   {/* Actions */}
                   <div className="flex gap-2">
                     <Link
-                      href="/configurator"
+                      href={`/${params.locale}/configurator`}
                       className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-colors"
                     >
                       <ShoppingCart className="w-4 h-4" />
-                      Configure
+                      {t('products.configure')}
                     </Link>
                     <Link
-                      href={`/products/${product.id}`}
+                      href={`/${params.locale}/products/${product.id}`}
                       className="px-4 py-2.5 border-2 border-industrial-200 rounded-lg font-semibold hover:border-primary hover:text-primary transition-colors"
                     >
                       <Eye className="w-4 h-4" />
@@ -301,8 +307,8 @@ export default function ProductsPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="font-semibold mb-2">Premium Quality</h3>
-              <p className="text-sm text-industrial-600">Built to last with high-grade materials</p>
+              <h3 className="font-semibold mb-2">{t('products.premiumQuality')}</h3>
+              <p className="text-sm text-industrial-600">{t('products.premiumQualityDesc')}</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -310,8 +316,8 @@ export default function ProductsPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="font-semibold mb-2">Fast Delivery</h3>
-              <p className="text-sm text-industrial-600">Quick turnaround from order to install</p>
+              <h3 className="font-semibold mb-2">{t('products.fastDelivery')}</h3>
+              <p className="text-sm text-industrial-600">{t('products.fastDeliveryDesc')}</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -319,8 +325,8 @@ export default function ProductsPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <h3 className="font-semibold mb-2">5 Year Warranty</h3>
-              <p className="text-sm text-industrial-600">Complete peace of mind guarantee</p>
+              <h3 className="font-semibold mb-2">{t('products.warranty')}</h3>
+              <p className="text-sm text-industrial-600">{t('products.warrantyDesc')}</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -328,8 +334,8 @@ export default function ProductsPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               </div>
-              <h3 className="font-semibold mb-2">24/7 Support</h3>
-              <p className="text-sm text-industrial-600">Always here to help you</p>
+              <h3 className="font-semibold mb-2">{t('products.support24')}</h3>
+              <p className="text-sm text-industrial-600">{t('products.support24Desc')}</p>
             </div>
           </div>
         </div>
@@ -339,16 +345,16 @@ export default function ProductsPage() {
       <section className="py-16 bg-gradient-to-br from-industrial-900 to-industrial-800">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-display font-bold text-white mb-4">
-            Can&apos;t Find What You&apos;re Looking For?
+            {t('products.cantFind')}
           </h2>
           <p className="text-xl text-industrial-300 mb-8 max-w-2xl mx-auto">
-            Every container can be fully customized. Use our 3D configurator to design your perfect solution.
+            {t('products.cantFindDesc')}
           </p>
           <Link
-            href="/configurator"
+            href={`/${params.locale}/configurator`}
             className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-lg font-semibold text-lg hover:bg-primary-dark transition-colors shadow-lg"
           >
-            Start Custom Configuration
+            {t('products.startCustom')}
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

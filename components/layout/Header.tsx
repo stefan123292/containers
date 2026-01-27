@@ -3,17 +3,20 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X, Phone, Mail } from 'lucide-react';
+import { useTranslations } from '@/hooks/useTranslations';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t, locale } = useTranslations();
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'Configurator', href: '/configurator' },
-    { name: 'Products', href: '/products' },
-    { name: 'Portfolio', href: '/portfolio' },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
+    { name: t('common.home'), href: '/' },
+    { name: t('common.configurator'), href: '/configurator' },
+    { name: t('common.products'), href: '/products' },
+    { name: t('common.portfolio'), href: '/portfolio' },
+    { name: t('common.about'), href: '/about' },
+    { name: t('common.contact'), href: '/contact' },
   ];
 
   return (
@@ -43,8 +46,8 @@ export function Header() {
               <div className="w-6 h-6 border-2 border-white rounded" />
             </div>
             <div>
-              <div className="text-white font-display font-bold text-xl">ModularBox</div>
-              <div className="text-primary text-xs">Custom Containers</div>
+              <div className="text-white font-display font-bold text-xl">Boxpert</div>
+              <div className="text-primary text-xs">{t('header.tagline')}</div>
             </div>
           </Link>
 
@@ -53,18 +56,19 @@ export function Header() {
             {navigation.map((item) => (
               <Link
                 key={item.name}
-                href={item.href}
+                href={`/${locale}${item.href}`}
                 className="text-industrial-200 hover:text-primary transition-colors font-medium"
               >
                 {item.name}
               </Link>
             ))}
             <Link
-              href="/configurator"
+              href={`/${locale}/configurator`}
               className="px-6 py-2.5 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-colors"
             >
-              Get Started
+              {t('common.getStarted')}
             </Link>
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile menu button */}
@@ -85,7 +89,7 @@ export function Header() {
               {navigation.map((item) => (
                 <Link
                   key={item.name}
-                  href={item.href}
+                  href={`/${locale}${item.href}`}
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-industrial-200 hover:text-primary transition-colors font-medium py-2"
                 >
@@ -93,12 +97,15 @@ export function Header() {
                 </Link>
               ))}
               <Link
-                href="/configurator"
+                href={`/${locale}/configurator`}
                 onClick={() => setMobileMenuOpen(false)}
                 className="px-6 py-2.5 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-colors text-center"
               >
-                Get Started
+                {t('common.getStarted')}
               </Link>
+              <div className="pt-2">
+                <LanguageSwitcher />
+              </div>
             </div>
           </div>
         </div>
