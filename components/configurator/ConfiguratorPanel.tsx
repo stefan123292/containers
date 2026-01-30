@@ -133,16 +133,6 @@ export function ConfiguratorPanel() {
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-lg">Doors</h3>
                 <button
-                  onClick={() => {
-                    const door = {
-                      id: generateId(),
-                      type: 'standard',
-                      position: { x: 0, y: -0.3, z: 0 },
-                      wall: 'front',
-                    };
-                    store.addDoor(door);
-                    trackConfiguratorAction('door_added', { doorType: door.type, wall: door.wall });
-                  }}
                   className="flex items-center gap-2 px-3 py-1.5 bg-primary text-white rounded-lg text-sm hover:bg-primary-dark transition-colors"
                 >
                   <Plus className="w-4 h-4" />
@@ -187,17 +177,6 @@ export function ConfiguratorPanel() {
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-lg">Windows</h3>
                 <button
-                  onClick={() => {
-                    const window = {
-                      id: generateId(),
-                      type: 'standard',
-                      position: { x: 2, y: 0.5, z: 0 },
-                      wall: 'front',
-                      size: 'medium',
-                    };
-                    store.addWindow(window);
-                    trackConfiguratorAction('window_added', { windowSize: window.size, wall: window.wall });
-                  }}
                   className="flex items-center gap-2 px-3 py-1.5 bg-primary text-white rounded-lg text-sm hover:bg-primary-dark transition-colors"
                 >
                   <Plus className="w-4 h-4" />
