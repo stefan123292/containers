@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { Menu, X, Phone, Mail } from 'lucide-react';
 import { useTranslations } from '@/hooks/useTranslations';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { Logo } from '@/components/ui/Logo';
+import { trackCTAClick } from '@/lib/analytics';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -41,15 +43,7 @@ export function Header() {
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <div className="w-6 h-6 border-2 border-white rounded" />
-            </div>
-            <div>
-              <div className="text-white font-display font-bold text-xl">Boxpert</div>
-              <div className="text-primary text-xs hidden sm:block">{t('header.tagline')}</div>
-            </div>
-          </Link>
+          <Logo showTagline={true} size="md" href="/" />
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -64,6 +58,7 @@ export function Header() {
             ))}
             <Link
               href={`/${locale}/configurator`}
+              onClick={() => trackCTAClick(t('common.getStarted'), 'header_desktop')}
               className="px-6 py-2.5 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-colors"
             >
               {t('common.getStarted')}
@@ -116,7 +111,10 @@ export function Header() {
               ))}
               <Link
                 href={`/${locale}/configurator`}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  trackCTAClick(t('common.getStarted'), 'header_mobile');
+                }}
                 className="px-6 py-2.5 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-colors text-center"
               >
                 {t('common.getStarted')}

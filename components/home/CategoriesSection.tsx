@@ -35,20 +35,20 @@ export function CategoriesSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 w-full max-w-6xl mb-4 lg:mb-6">
             {categoryKeys.slice(0, 3).map((key, index) => {
               const Icon = categoryIcons[categoryKeys.indexOf(key)];
-              return (
-                <Link
+            return (
+              <Link
                   key={key}
                   href={`/${locale}/products?category=${key}`}
                   className="group relative overflow-hidden rounded-xl bg-industrial-800/80 backdrop-blur-sm border border-industrial-700/50 hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-1"
                   style={{ animationDelay: `${index * 100}ms` }}
-                >
+              >
                   {/* Animated background gradient */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   {/* Shine effect on hover */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                  
-                  {/* Content */}
+                
+                {/* Content */}
                   <div className="relative p-5 lg:p-6">
                     {/* Icon container */}
                     <div className="relative mb-4">
@@ -114,13 +114,13 @@ export function CategoriesSection() {
                     {/* Title */}
                     <h3 className="text-xl lg:text-2xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors duration-500">
                       {t(`categories.items.${key}.name`)}
-                    </h3>
-                    
+                  </h3>
+                  
                     {/* Description */}
                     <p className="text-industrial-400 leading-relaxed mb-4 text-sm lg:text-base group-hover:text-industrial-300 transition-colors duration-500 line-clamp-2">
                       {t(`categories.items.${key}.description`)}
-                    </p>
-                    
+                  </p>
+                  
                     {/* CTA */}
                     <div className="flex items-center text-primary font-semibold text-sm group-hover:text-primary-dark transition-colors duration-500">
                       <span className="mr-2">{t('common.explore')}</span>
@@ -129,10 +129,10 @@ export function CategoriesSection() {
 
                     {/* Bottom accent line */}
                     <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  </div>
-                </Link>
-              );
-            })}
+                </div>
+              </Link>
+            );
+          })}
           </div>
         </div>
       </div>

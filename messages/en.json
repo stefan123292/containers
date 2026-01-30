@@ -26,7 +26,7 @@
     "supportAvailable": "Support available"
   },
   "features": {
-    "title": "Why choose Boxpert?",
+    "title": "Why choose BoXpert?",
     "subtitle": "Because we transform your ideas into functional, modern and durable spaces.",
     "cta": "Start configuring!",
     "items": {
@@ -122,11 +122,11 @@
     "sitemap": "Sitemap"
   },
   "about": {
-    "title": "About Boxpert",
+    "title": "About BoXpert",
     "subtitle": "Pioneering the future of modular construction with innovative technology and superior craftsmanship.",
     "story": {
       "title": "Our Story",
-      "p1": "Founded in 2008, Boxpert began with a simple mission: to revolutionize the way people think about modular construction. What started as a small operation with a handful of containers has grown into a leading provider of customizable modular solutions.",
+      "p1": "Founded in 2008, BoXpert began with a simple mission: to revolutionize the way people think about modular construction. What started as a small operation with a handful of containers has grown into a leading provider of customizable modular solutions.",
       "p2": "Today, we combine cutting-edge 3D technology with traditional craftsmanship to deliver containers that are not just functional, but beautifully designed and perfectly suited to each client's unique needs.",
       "p3": "With over 500 completed projects and a commitment to sustainability, we're proud to be at the forefront of the modular construction revolution."
     },
@@ -240,5 +240,13 @@
     "portfolio": "Loading portfolio...",
     "about": "Loading page...",
     "contact": "Loading contact page..."
+  },
+  "cookies": {
+    "title": "We use cookies",
+    "description": "This website uses cookies to enhance your browsing experience and to analyze website traffic. Google Analytics collects user data to help us understand how you interact with our site.",
+    "accept": "Accept",
+    "reject": "Reject",
+    "learnMore": "Learn more",
+    "privacyPolicy": "Privacy Policy"
   }
 }

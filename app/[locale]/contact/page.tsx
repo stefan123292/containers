@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { useTranslations } from '@/hooks/useTranslations';
+import { trackFormSubmit, trackButtonClick, trackExternalLink } from '@/lib/analytics';
 
 export default function ContactPage() {
   const { t, locale } = useTranslations();
@@ -16,6 +17,8 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Track form submission
+    trackFormSubmit('contact_form', 'contact_page');
     // TODO: Implement form submission
     console.log('Form submitted:', formData);
     alert('Thank you for your message! We will get back to you soon.');
@@ -59,7 +62,11 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">{t('contact.phone')}</h3>
-                    <a href="tel:+1234567890" className="text-industrial-600 hover:text-primary">
+                    <a 
+                      href="tel:+1234567890" 
+                      onClick={() => trackButtonClick('Phone', 'contact_page')}
+                      className="text-industrial-600 hover:text-primary"
+                    >
                       +1 (234) 567-890
                     </a>
                   </div>
@@ -71,7 +78,11 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">{t('contact.email')}</h3>
-                    <a href="mailto:info@containers.com" className="text-industrial-600 hover:text-primary">
+                    <a 
+                      href="mailto:info@containers.com" 
+                      onClick={() => trackButtonClick('Email', 'contact_page')}
+                      className="text-industrial-600 hover:text-primary"
+                    >
                       info@containers.com
                     </a>
                   </div>
@@ -235,6 +246,7 @@ export default function ContactPage() {
                 href="https://www.google.com/maps/place/St.+Anthony%E2%80%99s+Church/@44.4303973,26.1019462,18z/data=!4m6!3m5!1s0x40b1ff3e31e93745:0x429b14c5aaab2df1!8m2!3d44.4301036!4d26.1020425!16s%2Fg%2F1hfbhn8sm?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackExternalLink('https://www.google.com/maps', t('contact.getDirections'))}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-colors shadow-lg"
               >
                 <MapPin className="w-5 h-5" />
@@ -252,7 +264,7 @@ export default function ContactPage() {
                 allowFullScreen 
                 loading="lazy" 
                 referrerPolicy="no-referrer-when-downgrade"
-                title="ModularBox Location - St. Anthony's Church"
+                title="BoXpert Location - St. Anthony's Church"
               />
             </div>
 

@@ -26,7 +26,7 @@
     "supportAvailable": "Suport disponibil"
   },
   "features": {
-    "title": "De ce să alegi Boxpert?",
+    "title": "De ce să alegi BoXpert?",
     "subtitle": "Pentru că transformăm ideile tale în spații funcționale, moderne și durabile.",
     "cta": "Începe configurarea!",
     "items": {
@@ -122,11 +122,11 @@
     "sitemap": "Hartă site"
   },
   "about": {
-    "title": "Despre Boxpert",
+    "title": "Despre BoXpert",
     "subtitle": "Pionierii viitorului construcției modulare cu tehnologie inovatoare și meșteșug superior.",
     "story": {
       "title": "Povestea noastră",
-      "p1": "Fondată în 2008, Boxpert a început cu o misiune simplă: să revoluționeze modul în care oamenii gândesc construcția modulară. Ceea ce a început ca o operațiune mică cu câteva containere a crescut într-un furnizor de top al soluțiilor modulare personalizabile.",
+      "p1": "Fondată în 2008, BoXpert a început cu o misiune simplă: să revoluționeze modul în care oamenii gândesc construcția modulară. Ceea ce a început ca o operațiune mică cu câteva containere a crescut într-un furnizor de top al soluțiilor modulare personalizabile.",
       "p2": "Astăzi, combinăm tehnologia 3D de ultimă generație cu meșteșugul tradițional pentru a livra containere care nu sunt doar funcționale, ci și frumos proiectate și perfect adaptate nevoilor unice ale fiecărui client.",
       "p3": "Cu peste 500 de proiecte finalizate și un angajament față de durabilitate, suntem mândri să fim în fruntea revoluției construcției modulare."
     },
@@ -240,5 +240,13 @@
     "portfolio": "Se încarcă portofoliul...",
     "about": "Se încarcă pagina...",
     "contact": "Se încarcă pagina de contact..."
+  },
+  "cookies": {
+    "title": "Utilizăm cookie-uri",
+    "description": "Acest site folosește cookie-uri pentru a îmbunătăți experiența ta de navigare și pentru a analiza traficul site-ului. Google Analytics colectează date despre utilizatori pentru a ne ajuta să înțelegem modul în care interacționezi cu site-ul nostru.",
+    "accept": "Accept",
+    "reject": "Respinge",
+    "learnMore": "Află mai multe",
+    "privacyPolicy": "Politica de confidențialitate"
   }
 }

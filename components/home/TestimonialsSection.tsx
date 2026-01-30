@@ -16,7 +16,7 @@ const testimonials = [
     name: 'Michael Chen',
     role: 'CEO',
     company: 'TechStart Inc.',
-    content: 'We needed quick office expansion. ModularBox delivered three fully-equipped office containers in just 4 weeks. Incredible service!',
+    content: 'We needed quick office expansion. BoXpert delivered three fully-equipped office containers in just 4 weeks. Incredible service!',
     rating: 5,
     image: '',
   },

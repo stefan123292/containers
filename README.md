@@ -1,4 +1,4 @@
-# ModularBox - Custom Container Configurator Platform
+# BoXpert - Custom Container Configurator Platform
 
 A modern, high-conversion website for selling customizable modular containers with real-time 3D visualization and configuration.
 
@@ -218,6 +218,10 @@ GET  /api/pricing-rules         # Get current pricing
 Create a `.env.local` file:
 
 ```env
+# Google Analytics
+NEXT_PUBLIC_GA_ID=G-PVWMVSZ9R7
+
+# Site Configuration
 NEXT_PUBLIC_SITE_URL=https://yourdomain.com
 NEXT_PUBLIC_WHATSAPP_NUMBER=1234567890
 NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_key_here
@@ -257,7 +261,7 @@ Proprietary - All rights reserved
 ## 📞 Support
 
 For questions or support:
-- Email: dev@modularbox.com
+- Email: dev@boxpert.com
 - Documentation: See `/docs` folder
 - CMS Integration: See `docs/CMS_INTEGRATION.md`
 

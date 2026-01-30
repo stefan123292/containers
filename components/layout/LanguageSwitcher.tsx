@@ -4,10 +4,11 @@ import { useParams, usePathname, useRouter } from 'next/navigation';
 import { Globe } from 'lucide-react';
 import { useState } from 'react';
 import type { Locale } from '@/lib/translations';
+import { trackLanguageChange } from '@/lib/analytics';
 
 const languages: { code: Locale; name: string; flag: string }[] = [
-  { code: 'ro', name: 'Română', flag: '🇷🇴' },
-  { code: 'en', name: 'English', flag: 'en' },
+  { code: 'ro', name: 'Română', flag: '' },
+  { code: 'en', name: 'English', flag: '' },
 ];
 
 export function LanguageSwitcher() {
@@ -19,6 +20,8 @@ export function LanguageSwitcher() {
 
   const switchLanguage = (newLocale: Locale) => {
     setIsOpen(false);
+    // Track language change
+    trackLanguageChange(currentLocale, newLocale);
     // Remove current locale from pathname
     const pathWithoutLocale = pathname.replace(`/${currentLocale}`, '') || '/';
     // Add new locale

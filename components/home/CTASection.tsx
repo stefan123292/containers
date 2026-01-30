@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ArrowRight, Phone } from 'lucide-react';
 import { useTranslations } from '@/hooks/useTranslations';
+import { trackCTAClick, trackButtonClick } from '@/lib/analytics';
 
 export function CTASection() {
   const { t, locale } = useTranslations();
@@ -32,6 +33,7 @@ export function CTASection() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href={`/${locale}/configurator`}
+              onClick={() => trackCTAClick(t('cta.launchConfigurator'), 'cta_section')}
               className="group px-8 py-4 bg-white text-primary rounded-lg font-semibold text-lg hover:bg-industrial-100 transition-all flex items-center gap-2 shadow-xl hover:scale-105"
             >
               {t('cta.launchConfigurator')}
@@ -40,6 +42,7 @@ export function CTASection() {
             
             <a
               href="tel:+1234567890"
+              onClick={() => trackButtonClick(t('cta.callUs'), 'cta_section')}
               className="group px-8 py-4 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 rounded-lg font-semibold text-lg hover:bg-white/20 transition-all flex items-center gap-2"
             >
               <Phone className="w-5 h-5" />

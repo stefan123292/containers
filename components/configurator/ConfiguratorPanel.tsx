@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useConfiguratorStore } from '@/lib/store/configuratorStore';
 import { formatPrice, generateId } from '@/lib/utils';
+import { trackConfiguratorAction } from '@/lib/analytics';
 import { 
   Ruler, 
   Palette, 
@@ -70,7 +71,10 @@ export function ConfiguratorPanel() {
               dimensions="20' × 8' × 8'6''"
               description="Standard container, ideal for small projects"
               selected={store.size === '20ft'}
-              onSelect={() => store.setSize('20ft')}
+              onSelect={() => {
+                store.setSize('20ft');
+                trackConfiguratorAction('size_change', { size: '20ft' });
+              }}
             />
             
             <SizeOption
@@ -78,7 +82,10 @@ export function ConfiguratorPanel() {
               dimensions="40' × 8' × 8'6''"
               description="Double the space for larger applications"
               selected={store.size === '40ft'}
-              onSelect={() => store.setSize('40ft')}
+              onSelect={() => {
+                store.setSize('40ft');
+                trackConfiguratorAction('size_change', { size: '40ft' });
+              }}
             />
             
             <SizeOption
@@ -86,7 +93,10 @@ export function ConfiguratorPanel() {
               dimensions="40' × 8' × 9'6''"
               description="High cube - extra vertical space"
               selected={store.size === '40ft-hc'}
-              onSelect={() => store.setSize('40ft-hc')}
+              onSelect={() => {
+                store.setSize('40ft-hc');
+                trackConfiguratorAction('size_change', { size: '40ft-hc' });
+              }}
             />
           </div>
         )}
@@ -99,7 +109,10 @@ export function ConfiguratorPanel() {
                 {colorOptions.map((color) => (
                   <button
                     key={color.value}
-                    onClick={() => store.setExteriorColor(color.value)}
+                    onClick={() => {
+                      store.setExteriorColor(color.value);
+                      trackConfiguratorAction('color_change', { color: color.name, colorValue: color.value });
+                    }}
                     className={`relative p-4 rounded-lg border-2 transition-all ${
                       store.exteriorColor === color.value
                         ? 'border-primary ring-2 ring-primary/20'
@@ -120,12 +133,16 @@ export function ConfiguratorPanel() {
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-lg">Doors</h3>
                 <button
-                  onClick={() => store.addDoor({
-                    id: generateId(),
-                    type: 'standard',
-                    position: { x: 0, y: -0.3, z: 0 },
-                    wall: 'front',
-                  })}
+                  onClick={() => {
+                    const door = {
+                      id: generateId(),
+                      type: 'standard',
+                      position: { x: 0, y: -0.3, z: 0 },
+                      wall: 'front',
+                    };
+                    store.addDoor(door);
+                    trackConfiguratorAction('door_added', { doorType: door.type, wall: door.wall });
+                  }}
                   className="flex items-center gap-2 px-3 py-1.5 bg-primary text-white rounded-lg text-sm hover:bg-primary-dark transition-colors"
                 >
                   <Plus className="w-4 h-4" />
@@ -152,7 +169,10 @@ export function ConfiguratorPanel() {
                         </div>
                       </div>
                       <button
-                        onClick={() => store.removeDoor(door.id)}
+                        onClick={() => {
+                          store.removeDoor(door.id);
+                          trackConfiguratorAction('door_removed', { doorType: door.type, doorId: door.id });
+                        }}
                         className="p-2 text-red-600 hover:bg-red-50 rounded transition-colors"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -167,13 +187,17 @@ export function ConfiguratorPanel() {
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-lg">Windows</h3>
                 <button
-                  onClick={() => store.addWindow({
-                    id: generateId(),
-                    type: 'standard',
-                    position: { x: 2, y: 0.5, z: 0 },
-                    wall: 'front',
-                    size: 'medium',
-                  })}
+                  onClick={() => {
+                    const window = {
+                      id: generateId(),
+                      type: 'standard',
+                      position: { x: 2, y: 0.5, z: 0 },
+                      wall: 'front',
+                      size: 'medium',
+                    };
+                    store.addWindow(window);
+                    trackConfiguratorAction('window_added', { windowSize: window.size, wall: window.wall });
+                  }}
                   className="flex items-center gap-2 px-3 py-1.5 bg-primary text-white rounded-lg text-sm hover:bg-primary-dark transition-colors"
                 >
                   <Plus className="w-4 h-4" />
@@ -200,7 +224,10 @@ export function ConfiguratorPanel() {
                         </div>
                       </div>
                       <button
-                        onClick={() => store.removeWindow(window.id)}
+                        onClick={() => {
+                          store.removeWindow(window.id);
+                          trackConfiguratorAction('window_removed', { windowSize: window.size, windowId: window.id });
+                        }}
                         className="p-2 text-red-600 hover:bg-red-50 rounded transition-colors"
                       >
                         <Trash2 className="w-4 h-4" />

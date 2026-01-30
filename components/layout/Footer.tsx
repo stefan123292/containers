@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import { useTranslations } from '@/hooks/useTranslations';
+import { Logo } from '@/components/ui/Logo';
+import { trackExternalLink, trackButtonClick } from '@/lib/analytics';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -14,29 +16,47 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <div className="w-6 h-6 border-2 border-white rounded" />
-              </div>
-              <div>
-                <div className="text-white font-display font-bold text-xl">Boxpert</div>
-                <div className="text-primary text-xs">{t('footer.tagline')}</div>
-              </div>
+            <div className="mb-4">
+              <Logo showTagline={true} size="md" href="/" />
             </div>
             <p className="text-sm mb-4">
               {t('footer.description')}
             </p>
             <div className="flex gap-3">
-              <a href="#" className="w-9 h-9 bg-industrial-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors">
+              <a 
+                href="https://facebook.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={() => trackExternalLink('https://facebook.com', 'Facebook')}
+                className="w-9 h-9 bg-industrial-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors"
+              >
                 <Facebook className="w-4 h-4" />
               </a>
-              <a href="#" className="w-9 h-9 bg-industrial-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors">
+              <a 
+                href="https://twitter.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={() => trackExternalLink('https://twitter.com', 'Twitter')}
+                className="w-9 h-9 bg-industrial-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors"
+              >
                 <Twitter className="w-4 h-4" />
               </a>
-              <a href="#" className="w-9 h-9 bg-industrial-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors">
+              <a 
+                href="https://instagram.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={() => trackExternalLink('https://instagram.com', 'Instagram')}
+                className="w-9 h-9 bg-industrial-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors"
+              >
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href="#" className="w-9 h-9 bg-industrial-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors">
+              <a 
+                href="https://linkedin.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={() => trackExternalLink('https://linkedin.com', 'LinkedIn')}
+                className="w-9 h-9 bg-industrial-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors"
+              >
                 <Linkedin className="w-4 h-4" />
               </a>
             </div>
@@ -78,11 +98,23 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                <a href="tel:+1234567890" className="hover:text-primary transition-colors">+1 (234) 567-890</a>
+                <a 
+                  href="tel:+1234567890" 
+                  onClick={() => trackButtonClick('Phone', 'footer')}
+                  className="hover:text-primary transition-colors"
+                >
+                  +1 (234) 567-890
+                </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0" />
-                <a href="mailto:info@containers.com" className="hover:text-primary transition-colors">info@containers.com</a>
+                <a 
+                  href="mailto:info@containers.com" 
+                  onClick={() => trackButtonClick('Email', 'footer')}
+                  className="hover:text-primary transition-colors"
+                >
+                  info@containers.com
+                </a>
               </li>
             </ul>
           </div>
@@ -91,7 +123,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-industrial-800">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-            <p>&copy; {currentYear} Boxpert. {t('footer.allRightsReserved')}.</p>
+            <p>&copy; {currentYear} BoXpert. {t('footer.allRightsReserved')}.</p>
             <div className="flex gap-6">
               <Link href={`/${locale}/privacy`} className="hover:text-primary transition-colors">{t('footer.privacyPolicy')}</Link>
               <Link href={`/${locale}/terms`} className="hover:text-primary transition-colors">{t('footer.termsOfService')}</Link>

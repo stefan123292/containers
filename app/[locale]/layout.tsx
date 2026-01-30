@@ -5,6 +5,10 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingActions } from "@/components/layout/FloatingActions";
 import { ReviewPrompt } from "@/components/layout/ReviewPrompt";
+import { CookieBanner } from "@/components/layout/CookieBanner";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { PageViewTracker } from "@/components/analytics/PageViewTracker";
+import { ScrollDepthTracker } from "@/components/analytics/ScrollDepthTracker";
 import { locales, defaultLocale, type Locale } from "@/lib/translations";
 
 const inter = Inter({ 
@@ -18,9 +22,14 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "ModularBox - Custom Container Solutions | 3D Configurator",
-  description: "Design and customize modular containers in real-time with our revolutionary 3D configurator. Living spaces, offices, storage, and specialized units.",
-  keywords: "modular containers, custom containers, 3D configurator, shipping containers, container homes, office containers",
+  title: "BoXpert - Custom Container Solutions | Configurator",
+  description: "Design and customize modular containers in real-time with our revolutionary configurator. Living spaces, offices, storage, and specialized units.",
+  keywords: "modular containers, custom containers, configurator, shipping containers, container homes, office containers",
+  icons: {
+    icon: '/images/BoXpert.svg',
+    shortcut: '/images/BoXpert.svg',
+    apple: '/images/BoXpert.svg',
+  },
 };
 
 export function generateStaticParams() {
@@ -39,6 +48,8 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="font-sans">
+        <PageViewTracker />
+        <ScrollDepthTracker />
         <Header />
         <main className="pt-16 md:pt-28">
           {children}
@@ -46,6 +57,8 @@ export default async function LocaleLayout({
         <Footer />
         <FloatingActions />
         <ReviewPrompt />
+        <CookieBanner />
+        <GoogleAnalytics />
       </body>
     </html>
   );

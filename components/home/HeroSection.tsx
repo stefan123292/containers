@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Play } from 'lucide-react';
 import { useTranslations } from '@/hooks/useTranslations';
+import { trackCTAClick } from '@/lib/analytics';
 
 export function HeroSection() {
   const { t, locale } = useTranslations();
@@ -53,16 +54,17 @@ export function HeroSection() {
             {t('hero.description')}
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up delay-300">
-            <Link
-              href={`/${locale}/configurator`}
-              className="group px-8 py-4 bg-primary text-white rounded-lg font-semibold text-lg hover:bg-primary-dark transition-all flex items-center gap-2 shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105"
-            >
-              {t('hero.cta')}
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
+                 {/* CTA Buttons */}
+                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up delay-300">
+                   <Link
+                     href={`/${locale}/configurator`}
+                     onClick={() => trackCTAClick(t('hero.cta'), 'hero_section')}
+                     className="group px-8 py-4 bg-primary text-white rounded-lg font-semibold text-lg hover:bg-primary-dark transition-all flex items-center gap-2 shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105"
+                   >
+                     {t('hero.cta')}
+                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                   </Link>
+                 </div>
 
           {/* Trust indicators */}
           <div className="mt-16 pt-8 border-t border-industrial-700 animate-fade-in delay-500">
