@@ -6,6 +6,7 @@
 export type ConsentStatus = 'pending' | 'accepted' | 'rejected';
 
 const CONSENT_STORAGE_KEY = 'cookie_consent_boxpert';
+
 const CONSENT_EXPIRY_DAYS = 365; // Consent expires after 1 year
 
 export interface ConsentData {
