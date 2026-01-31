@@ -16,10 +16,14 @@ export function middleware(request: NextRequest) {
   if (!pathnameHasLocale) {
     const locale = defaultLocale;
     
-    // Redirect to include the locale in the URL
-    return NextResponse.redirect(
-      new URL(`/${locale}${pathname === '/' ? '' : pathname}`, request.url)
-    );
+    // 1. Create the new URL object first
+    const url = new URL(`/${locale}${pathname === '/' ? '' : pathname}`, request.url);
+    
+    // 2. COPY THE QUERY PARAMETERS (This fixes your GA4 issue)
+    url.search = request.nextUrl.search;
+
+    // 3. Return the redirect using the new URL object
+    return NextResponse.redirect(url);
   }
 }
 
