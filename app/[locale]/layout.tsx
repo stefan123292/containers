@@ -10,7 +10,9 @@ import { CookieBanner } from "@/components/layout/CookieBanner";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 import { ScrollDepthTracker } from "@/components/analytics/ScrollDepthTracker";
+import { StructuredData } from "@/components/seo/StructuredData";
 import { locales, defaultLocale, type Locale } from "@/lib/translations";
+import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -22,16 +24,10 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
 });
 
-export const metadata: Metadata = {
-  title: "BoXpert - Custom Container Solutions | Configurator",
-  description: "Design and customize modular containers in real-time with our revolutionary configurator. Living spaces, offices, storage, and specialized units.",
-  keywords: "modular containers, custom containers, configurator, shipping containers, container homes, office containers",
-  icons: {
-    icon: '/images/BoXpert.svg',
-    shortcut: '/images/BoXpert.svg',
-    apple: '/images/BoXpert.svg',
-  },
-};
+export async function generateMetadata({ params }: { params: { locale: Locale } }): Promise<Metadata> {
+  const locale = params?.locale || defaultLocale;
+  return generateSEOMetadata(locale, 'home');
+}
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -49,6 +45,8 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="font-sans">
+        <StructuredData locale={locale} type="Organization" />
+        <StructuredData locale={locale} type="WebSite" />
         <Suspense fallback={null}>
           <PageViewTracker />
         </Suspense>

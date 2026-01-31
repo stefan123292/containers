@@ -1,6 +1,7 @@
 import { Home, Briefcase, Building2, Users } from 'lucide-react';
 import { getServerTranslations } from '@/lib/server-translations';
 import type { Locale } from '@/lib/translations';
+import { StructuredData } from '@/components/seo/StructuredData';
 
 const projects = [
   {
@@ -67,6 +68,8 @@ export default async function PortfolioPage({
   const t = await getServerTranslations(params.locale);
   
   return (
+  <>
+      <StructuredData locale={params.locale} type="Product" />
     <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="bg-gradient-to-br from-industrial-900 to-industrial-800 py-20">
@@ -179,6 +182,7 @@ export default async function PortfolioPage({
         </div>
       </section>
     </div>
+    </>
   );
 }
 

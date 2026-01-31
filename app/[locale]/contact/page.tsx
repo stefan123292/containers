@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { useTranslations } from '@/hooks/useTranslations';
 import { trackFormSubmit, trackButtonClick, trackExternalLink } from '@/lib/analytics';
+import { StructuredData } from '@/components/seo/StructuredData';
 
 export default function ContactPage() {
   const { t, locale } = useTranslations();
@@ -32,7 +33,9 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <StructuredData locale={locale} type="Organization" />
+      <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="bg-gradient-to-br from-industrial-900 to-industrial-800 py-20">
         <div className="container mx-auto px-4">
@@ -302,6 +305,7 @@ export default function ContactPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }
 

@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import Link from 'next/link';
 import Image from 'next/image';
 import { ShoppingCart, Eye, Star, ArrowRight } from 'lucide-react';
 import { getServerTranslations } from '@/lib/server-translations';
+import { StructuredData } from '@/components/seo/StructuredData';
+import { generateMetadata as generateSEOMetadata } from '@/lib/seo';
 import type { Locale } from '@/lib/translations';
+
+export async function generateMetadata({ params }: { params: { locale: Locale } }): Promise<Metadata> {
+  return generateSEOMetadata(params.locale, 'products');
+}
 
 const products = [
   {
@@ -111,7 +118,9 @@ export default async function ProductsPage({
   const t = await getServerTranslations(params.locale);
   
   return (
-    <div className="min-h-screen bg-industrial-50">
+    <>
+      <StructuredData locale={params.locale} type="Product" />
+      <div className="min-h-screen bg-industrial-50">
       {/* Hero Banner */}
       <section className="relative bg-gradient-to-br from-industrial-900 to-industrial-800 py-16">
         <div className="container mx-auto px-4">
@@ -360,5 +369,6 @@ export default async function ProductsPage({
         </div>
       </section>
     </div>
-  );
+    </>
+    );
 }
