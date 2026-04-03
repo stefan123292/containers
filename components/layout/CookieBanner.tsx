@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { X, Cookie } from 'lucide-react';
+import Link from 'next/link';
 import { useTranslations } from '@/hooks/useTranslations';
 import { getConsentStatus, setConsentStatus, type ConsentStatus } from '@/lib/consent';
 import { trackEvent } from '@/lib/analytics';
@@ -85,6 +86,12 @@ export function CookieBanner() {
             <p className="text-sm md:text-base text-industrial-300 leading-relaxed mb-4">
               {t('cookies.description')}
             </p>
+            <Link
+              href={`/${locale}/privacy`}
+              className="text-sm text-primary hover:text-primary-light transition-colors underline underline-offset-4"
+            >
+              {t('cookies.learnMore')} - {t('cookies.privacyPolicy')}
+            </Link>
           </div>
 
           {/* Actions */}

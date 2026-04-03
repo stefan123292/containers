@@ -40,7 +40,7 @@
       },
       "quality": {
         "title": "Calitate premium",
-        "description": "12 luni de garanție pentru toate proiectele. Transparență totală la materialele folosite, primiți fișa tehnică a fiecarui spațiu executat de noi!"
+        "description": "12 luni de garanție la infiltrații la toate proiectele. Transparență totală la materialele folosite, primiți fișa tehnică a fiecarui spațiu executat de noi!"
       },
       "customizable": {
         "title": "Personalizare completă",
@@ -218,7 +218,24 @@
     "yearsExperience": "Ani experiență",
     "readyToCreate": "Gata să-ți creezi propriul?",
     "readyToCreateDesc": "Începe să-ți proiectezi soluția de containere personalizate astăzi cu configuratorul nostru interactiv în timp real.",
-    "startConfiguring": "Începe configurarea"
+    "startConfiguring": "Începe configurarea",
+    "backToList": "Înapoi la portofoliu",
+    "carousel": {
+      "prev": "Imaginea anterioară",
+      "next": "Imaginea următoare"
+    },
+    "projects": {
+      "birouParcAuto": {
+        "title": "Birou parc auto",
+        "tag": "Comercial",
+        "description": "Container 6 x 3 m cu 2 ferestre extra, perete despărțitor, toaletă și debara.",
+        "feature1": "6 × 3 m",
+        "feature2": "2 ferestre extra",
+        "feature3": "Perete despărțitor",
+        "feature4": "Toaletă",
+        "feature5": "Debara"
+      }
+    }
   },
   "reviewPrompt": {
     "title": "Te bucuri de serviciul nostru?",
@@ -301,7 +318,8 @@
       "defaultDoorModel": "Usa standart (90x200 cm)",
       "defaultWindowModel": "Fereastră standard (100x100 cm)",
       "noDoors": "Nu ai adăugat încă uși",
-      "noWindows": "Nu ai adăugat încă ferestre"
+      "noWindows": "Nu ai adăugat încă ferestre",
+      "unavailableFor2x2": "Pentru dimensiunea 2 x 2 m nu sunt disponibile uși sau ferestre extra."
     },
     "interior": {
       "title": "Opțiuni și finisaje",

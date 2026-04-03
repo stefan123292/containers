@@ -16,7 +16,8 @@ import {
   Plus,
   Trash2,
   X,
-  Loader2
+  Loader2,
+  Box
 } from 'lucide-react';
 
 export function ConfiguratorPanel() {
@@ -29,6 +30,7 @@ export function ConfiguratorPanel() {
   const totalPrice = store.calculatePrice();
   const canAddDoor = store.doors.length < 5;
   const canAddWindow = store.windows.length < 5;
+  const isTwoByTwo = store.size === '2x2';
   const stairsSizes = new Set(['6x2_5', '6x3', '9x3']);
   const pricing = DEFAULT_PRICING;
   const size = store.size as ContainerSize;
@@ -133,6 +135,7 @@ export function ConfiguratorPanel() {
             
             <SizeOption
               size="6 x 3 m"
+              visualScale={0.7}
               dimensions="5950 mm (L) * 3000 mm (l) * 2800 mm (Î)"
               description={t('configurator.size.options.6x3.description')}
               selected={store.size === '6x3'}
@@ -144,6 +147,7 @@ export function ConfiguratorPanel() {
             
             <SizeOption
               size="6 x 2,5 m"
+              visualScale={0.62}
               dimensions="5950 mm (L) * 2500 mm (l) * 2800 mm (Î)"
               description={t('configurator.size.options.6x2_5.description')}
               selected={store.size === '6x2_5'}
@@ -155,6 +159,7 @@ export function ConfiguratorPanel() {
             
             <SizeOption
               size="2 x 2 m"
+              visualScale={0.32}
               dimensions="1950 mm (L) * 2000 mm (l) * 2800 mm (Î)"
               description={t('configurator.size.options.2x2.description')}
               selected={store.size === '2x2'}
@@ -166,6 +171,7 @@ export function ConfiguratorPanel() {
 
             <SizeOption
               size="4 x 2 m"
+              visualScale={0.5}
               dimensions="3950 mm (L) * 2000 mm (l) * 2800 mm (Î)"
               description={t('configurator.size.options.4x2.description')}
               selected={store.size === '4x2'}
@@ -177,6 +183,7 @@ export function ConfiguratorPanel() {
 
             <SizeOption
               size="9 x 3 m"
+              visualScale={1}
               dimensions="8950 mm (L) * 3000 mm (l) * 2800 mm (Î)"
               description={t('configurator.size.options.9x3.description')}
               selected={store.size === '9x3'}
@@ -221,7 +228,7 @@ export function ConfiguratorPanel() {
                 <h3 className="font-semibold text-lg">{t('configurator.exterior.extraDoors')}</h3>
                 <button
                   onClick={() => {
-                    if (!canAddDoor) return;
+                    if (!canAddDoor || isTwoByTwo) return;
                     store.addDoor({
                       id: generateId(),
                       type: 'standard',
@@ -230,14 +237,19 @@ export function ConfiguratorPanel() {
                     });
                     trackConfiguratorAction('door_added', { totalDoors: store.doors.length + 1 });
                   }}
-                  disabled={!canAddDoor}
-                  className="flex items-center gap-2 px-3 py-1.5 bg-primary text-white rounded-lg text-sm hover:bg-primary-dark transition-colors"
+                  disabled={!canAddDoor || isTwoByTwo}
+                  className="flex items-center gap-2 px-3 py-1.5 bg-primary text-white rounded-lg text-sm hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Plus className="w-4 h-4" />
                   {t('configurator.exterior.add')}
                 </button>
               </div>
               <p className="text-xs text-industrial-500 mb-3">{t('configurator.exterior.maxDoors')}</p>
+              {isTwoByTwo && (
+                <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-md px-2 py-1 mb-3">
+                  {t('configurator.exterior.unavailableFor2x2')}
+                </p>
+              )}
               <p className="text-xs text-industrial-500 mb-2">{t('configurator.exterior.extraDoorPrice')}: €{pricing.extraDoorPriceBySize[size]} +TVA</p>
               <p className="text-xs text-industrial-500 mb-3">{t('configurator.exterior.addedModel')}: {t('configurator.exterior.defaultDoorModel')}</p>
               
@@ -276,7 +288,7 @@ export function ConfiguratorPanel() {
                 <h3 className="font-semibold text-lg">{t('configurator.exterior.extraWindows')}</h3>
                 <button
                   onClick={() => {
-                    if (!canAddWindow) return;
+                    if (!canAddWindow || isTwoByTwo) return;
                     store.addWindow({
                       id: generateId(),
                       type: 'standard',
@@ -286,14 +298,19 @@ export function ConfiguratorPanel() {
                     });
                     trackConfiguratorAction('window_added', { totalWindows: store.windows.length + 1 });
                   }}
-                  disabled={!canAddWindow}
-                  className="flex items-center gap-2 px-3 py-1.5 bg-primary text-white rounded-lg text-sm hover:bg-primary-dark transition-colors"
+                  disabled={!canAddWindow || isTwoByTwo}
+                  className="flex items-center gap-2 px-3 py-1.5 bg-primary text-white rounded-lg text-sm hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Plus className="w-4 h-4" />
                   {t('configurator.exterior.add')}
                 </button>
               </div>
               <p className="text-xs text-industrial-500 mb-3">{t('configurator.exterior.maxWindows')}</p>
+              {isTwoByTwo && (
+                <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-md px-2 py-1 mb-3">
+                  {t('configurator.exterior.unavailableFor2x2')}
+                </p>
+              )}
               <p className="text-xs text-industrial-500 mb-2">{t('configurator.exterior.extraWindowPrice')}: €{pricing.extraWindowPriceBySize[size]} +TVA</p>
               <p className="text-xs text-industrial-500 mb-3">{t('configurator.exterior.addedModel')}: {t('configurator.exterior.defaultWindowModel')}</p>
               
@@ -518,7 +535,8 @@ function TabButton({ active, onClick, icon, label }: any) {
   );
 }
 
-function SizeOption({ size, dimensions, description, selected, onSelect }: any) {
+function SizeOption({ size, dimensions, description, selected, onSelect, visualScale = 1 }: any) {
+  const widthPercent = Math.max(25, Math.min(100, Math.round(visualScale * 100)));
   return (
     <button
       onClick={onSelect}
@@ -530,6 +548,12 @@ function SizeOption({ size, dimensions, description, selected, onSelect }: any) 
     >
       <div className="flex items-center justify-between mb-2">
         <h4 className="font-semibold text-lg">{size}</h4>
+        <div className="flex items-center gap-2">
+          <Box className="w-4 h-4 text-industrial-500" />
+          <div className="w-16 h-2 bg-industrial-200 rounded-full overflow-hidden">
+            <div className="h-full bg-primary rounded-full" style={{ width: `${widthPercent}%` }} />
+          </div>
+        </div>
         {selected && (
           <div className="w-5 h-5 bg-primary rounded-full flex items-center justify-center">
             <div className="w-2 h-2 bg-white rounded-full" />

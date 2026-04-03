@@ -82,6 +82,38 @@ export function buildQuoteEmailToBusiness(payload: QuotePayload): string {
 
   const doors = Array.isArray(cfg.doors) ? cfg.doors.length : 0;
   const windows = Array.isArray(cfg.windows) ? cfg.windows.length : 0;
+  const isRo = locale !== 'en';
+
+  const sizeMap: Record<string, string> = {
+    '2x2': '2 x 2 m',
+    '4x2': '4 x 2 m',
+    '6x2_5': '6 x 2,5 m',
+    '6x3': '6 x 3 m',
+    '9x3': '9 x 3 m',
+  };
+  const colorMap: Record<string, string> = {
+    '#2D3039': isRo ? 'Gri Antracit' : 'Anthracite Gray',
+    '#F3F4F6': isRo ? 'Alb industrial' : 'Industrial White',
+  };
+  const interiorMap: Record<string, string> = {
+    none: isRo ? 'Fără' : 'None',
+    partition_pvc_door: isRo ? 'Perete despărțitor cu ușă PVC' : 'Partition wall with PVC door',
+    sink: isRo ? 'Chiuvetă' : 'Sink',
+    wc: 'WC',
+    shower_cabin: isRo ? 'Cabină duș' : 'Shower cabin',
+    stairs_railing: isRo ? 'Scară cu balustradă' : 'Stairs with railing',
+    terrace_railing: isRo ? 'Terasă cu balustrade' : 'Terrace with railings',
+  };
+  const flooringMap: Record<string, string> = {
+    none: isRo ? 'Fără' : 'None',
+    linoleum: isRo ? 'Linoleum' : 'Linoleum',
+    parquet: isRo ? 'Parchet' : 'Parquet',
+  };
+
+  const sizeLabel = cfg.size ? sizeMap[String(cfg.size)] || String(cfg.size) : '—';
+  const colorLabel = cfg.exteriorColor ? colorMap[String(cfg.exteriorColor)] || String(cfg.exteriorColor) : '—';
+  const interiorLabel = cfg.interiorFinish ? interiorMap[String(cfg.interiorFinish)] || String(cfg.interiorFinish) : '—';
+  const flooringLabel = cfg.flooring ? flooringMap[String(cfg.flooring)] || String(cfg.flooring) : '—';
 
   const rows =
     row('Nume', contact.name) +
@@ -89,23 +121,18 @@ export function buildQuoteEmailToBusiness(payload: QuotePayload): string {
     (contact.phone ? row('Telefon', contact.phone) : '') +
     row('Limba / Locale', locale) +
     row('Preț estimat', estimatedPriceLabel) +
-    row('Mărime', String(cfg.size ?? '—')) +
-    row('Culoare exterioară (hex)', String(cfg.exteriorColor ?? '—')) +
+    row('Mărime', sizeLabel) +
+    row('Culoare exterioară', colorLabel) +
     row('Uși (total)', String(doors)) +
     row('Geamuri (total)', String(windows)) +
-    row('Finisaj interior', String(cfg.interiorFinish ?? '—')) +
-    row('Pardoseală', String(cfg.flooring ?? '—')) +
+    row('Finisaj interior', interiorLabel) +
+    row('Pardoseală', flooringLabel) +
     row('Instalație electrică', cfg.electrical ? 'Da' : 'Nu') +
     row('Instalație sanitară', cfg.plumbing ? 'Da' : 'Nu') +
     row('Izolație', cfg.hasInsulation ? 'Da' : 'Nu') +
     (cfg.extraMessage
       ? rowMultiline('Mesaj / opțiuni extra', cfg.extraMessage)
-      : '') +
-    (() => {
-      const raw = JSON.stringify(configuration, null, 2);
-      const truncated = raw.length > 8000 ? `${raw.slice(0, 8000)}\n… (trunchiat)` : raw;
-      return rowMultiline('JSON config (detaliu)', truncated);
-    })();
+      : '');
 
   return wrap('Cerere ofertă — configurator', rows);
 }

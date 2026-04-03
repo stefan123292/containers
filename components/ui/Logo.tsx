@@ -12,9 +12,9 @@ interface LogoProps {
 }
 
 const sizeClasses = {
-  sm: 'w-8 h-8',
-  md: 'w-10 h-10',
-  lg: 'w-12 h-12',
+  sm: 'w-12 h-12',
+  md: 'w-[3.75rem] h-[3.75rem]',
+  lg: 'w-[4.5rem] h-[4.5rem]',
 };
 
 export function Logo({ showTagline = false, size = 'md', className = '', href }: LogoProps) {

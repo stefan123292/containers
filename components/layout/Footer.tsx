@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 import { useTranslations } from '@/hooks/useTranslations';
 import { Logo } from '@/components/ui/Logo';
 import { trackExternalLink, trackButtonClick } from '@/lib/analytics';
@@ -33,15 +33,6 @@ export function Footer() {
                 <Facebook className="w-4 h-4" />
               </a>
               <a 
-                href="https://twitter.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                onClick={() => trackExternalLink('https://twitter.com', 'Twitter')}
-                className="w-9 h-9 bg-industrial-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors"
-              >
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a 
                 href="https://instagram.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -49,15 +40,6 @@ export function Footer() {
                 className="w-9 h-9 bg-industrial-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors"
               >
                 <Instagram className="w-4 h-4" />
-              </a>
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                onClick={() => trackExternalLink('https://linkedin.com', 'LinkedIn')}
-                className="w-9 h-9 bg-industrial-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors"
-              >
-                <Linkedin className="w-4 h-4" />
               </a>
             </div>
           </div>
@@ -82,7 +64,6 @@ export function Footer() {
               <li><Link href={`/${locale}/products?category=living`} className="hover:text-primary transition-colors">{t('footer.livingContainers')}</Link></li>
               <li><Link href={`/${locale}/products?category=office`} className="hover:text-primary transition-colors">{t('footer.officeContainers')}</Link></li>
               <li><Link href={`/${locale}/products?category=sanitary`} className="hover:text-primary transition-colors">{t('footer.sanitaryUnits')}</Link></li>
-              <li><Link href={`/${locale}/products?category=refrigerated`} className="hover:text-primary transition-colors">{t('footer.refrigerated')}</Link></li>
               <li><Link href={`/${locale}/products?category=storage`} className="hover:text-primary transition-colors">{t('footer.storage')}</Link></li>
               <li><Link href={`/${locale}/products?category=custom`} className="hover:text-primary transition-colors">{t('footer.customModules')}</Link></li>
             </ul>

@@ -218,7 +218,24 @@
     "yearsExperience": "Years Experience",
     "readyToCreate": "Ready to Create Your Own?",
     "readyToCreateDesc": "Start designing your custom container solution today with our interactive real-time configurator.",
-    "startConfiguring": "Start Configuring"
+    "startConfiguring": "Start Configuring",
+    "backToList": "Back to portfolio",
+    "carousel": {
+      "prev": "Previous image",
+      "next": "Next image"
+    },
+    "projects": {
+      "birouParcAuto": {
+        "title": "Car park office",
+        "tag": "Commercial",
+        "description": "6 × 3 m container with 2 extra windows, partition wall, toilet and pantry.",
+        "feature1": "6 × 3 m",
+        "feature2": "2 extra windows",
+        "feature3": "Partition wall",
+        "feature4": "Toilet",
+        "feature5": "Pantry"
+      }
+    }
   },
   "reviewPrompt": {
     "title": "Enjoying Our Service?",
@@ -301,7 +318,8 @@
       "defaultDoorModel": "Standard door (90x200 cm)",
       "defaultWindowModel": "Standard window (100x100 cm)",
       "noDoors": "No extra doors added yet",
-      "noWindows": "No extra windows added yet"
+      "noWindows": "No extra windows added yet",
+      "unavailableFor2x2": "For size 2 x 2 m, extra doors or windows are not available."
     },
     "interior": {
       "title": "Options and Finishes",

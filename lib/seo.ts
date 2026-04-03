@@ -266,5 +266,13 @@ export function generateMetadata(locale: Locale, page: string) {
         'max-snippet': -1,
       },
     },
+    icons: {
+      icon: [
+        { url: '/images/BoXpert.svg', type: 'image/svg+xml' },
+        { url: '/images/BoXpert.svg', rel: 'shortcut icon' },
+      ],
+      apple: [{ url: '/images/BoXpert.svg' }],
+    },
+    manifest: '/manifest.webmanifest',
   };
 }

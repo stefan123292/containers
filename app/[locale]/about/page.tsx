@@ -99,34 +99,6 @@ export default async function AboutPage({
         </div>
       </section>
 
-      {/* Team */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-display font-bold text-center text-industrial-900 mb-12">
-              {t('about.team.title')}
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                { name: 'John Smith', role: 'CEO & Founder', description: '15+ years in modular construction' },
-                { name: 'Sarah Johnson', role: 'Head of Design', description: 'Award-winning architect' },
-                { name: 'Michael Chen', role: 'Operations Director', description: 'Logistics and manufacturing expert' },
-              ].map((member) => (
-                <div key={member.name} className="text-center">
-                  <div className="w-32 h-32 bg-gradient-to-br from-primary to-primary-dark rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-bold">
-                    {member.name.split(' ').map(n => n[0]).join('')}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
-                  <p className="text-primary font-medium mb-2">{member.role}</p>
-                  <p className="text-industrial-600 text-sm">{member.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="py-16 bg-gradient-to-br from-industrial-900 to-industrial-800">
         <div className="container mx-auto px-4 text-center">

@@ -1,0 +1,17 @@
+{
+  "name": "BoXpert",
+  "short_name": "BoXpert",
+  "description": "Containere modulare personalizate",
+  "start_url": "/ro",
+  "display": "standalone",
+  "background_color": "#101828",
+  "theme_color": "#101828",
+  "icons": [
+    {
+      "src": "/images/BoXpert.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

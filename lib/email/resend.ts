@@ -36,7 +36,6 @@ export async function sendViaResend(params: SendEmailParams): Promise<{ id?: str
     const msg = typeof data === 'object' && data !== null && 'message' in data
       ? String((data as { message?: string }).message)
       : res.statusText;
-      console.log(msg)
     throw new Error(msg || 'Failed to send email');
   }
 
