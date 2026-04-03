@@ -15,14 +15,38 @@ export default function ContactPage() {
     subject: '',
     message: '',
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [formFeedback, setFormFeedback] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Track form submission
-    trackFormSubmit('contact_form', 'contact_page');
-    // TODO: Implement form submission
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
+    setSubmitting(true);
+    setFormFeedback('idle');
+    try {
+      const res = await fetch('/api/send-contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || undefined,
+          subject: formData.subject,
+          message: formData.message,
+          locale,
+        }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(typeof data.error === 'string' ? data.error : 'error');
+      }
+      trackFormSubmit('contact_form', 'contact_page');
+      setFormFeedback('success');
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    } catch {
+      setFormFeedback('error');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -66,11 +90,11 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold mb-1">{t('contact.phone')}</h3>
                     <a 
-                      href="tel:+1234567890" 
+                      href="tel:+40774957340" 
                       onClick={() => trackButtonClick('Phone', 'contact_page')}
                       className="text-industrial-600 hover:text-primary"
                     >
-                      +1 (234) 567-890
+                      +40774957340
                     </a>
                   </div>
                 </div>
@@ -82,11 +106,11 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold mb-1">{t('contact.email')}</h3>
                     <a 
-                      href="mailto:info@containers.com" 
+                      href="mailto:contact@boxpert.ro" 
                       onClick={() => trackButtonClick('Email', 'contact_page')}
                       className="text-industrial-600 hover:text-primary"
                     >
-                      info@containers.com
+                      contact@boxpert.ro
                     </a>
                   </div>
                 </div>
@@ -98,9 +122,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold mb-1">{t('contact.address')}</h3>
                     <p className="text-industrial-600">
-                      123 Industrial Park Ave<br />
-                      Manufacturing District<br />
-                      New York, NY 10001
+                      DJ100 3, 077180 Tunari
                     </p>
                   </div>
                 </div>
@@ -132,6 +154,16 @@ export default function ContactPage() {
                 <h2 className="text-2xl font-display font-bold mb-6">{t('contact.sendMessage')}</h2>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {formFeedback === 'success' && (
+                    <p className="text-sm text-green-800 bg-green-50 border border-green-200 rounded-lg px-4 py-3">
+                      {t('contact.formSuccess')}
+                    </p>
+                  )}
+                  {formFeedback === 'error' && (
+                    <p className="text-sm text-red-800 bg-red-50 border border-red-200 rounded-lg px-4 py-3">
+                      {t('contact.formError')}
+                    </p>
+                  )}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -178,7 +210,7 @@ export default function ContactPage() {
                         value={formData.phone}
                         onChange={handleChange}
                         className="w-full px-4 py-3 border border-industrial-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                        placeholder="+1 (234) 567-890"
+                        placeholder="+40774957340"
                       />
                     </div>
 
@@ -221,10 +253,11 @@ export default function ContactPage() {
 
                   <button
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-colors"
+                    disabled={submitting}
+                    className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-colors disabled:opacity-60"
                   >
                     <Send className="w-5 h-5" />
-                    {t('contact.send')}
+                    {submitting ? t('contact.formSending') : t('contact.send')}
                   </button>
                 </form>
               </div>
@@ -246,7 +279,7 @@ export default function ContactPage() {
                 {t('contact.locationSubtitle')}
               </p>
               <a
-                href="https://www.google.com/maps/place/St.+Anthony%E2%80%99s+Church/@44.4303973,26.1019462,18z/data=!4m6!3m5!1s0x40b1ff3e31e93745:0x429b14c5aaab2df1!8m2!3d44.4301036!4d26.1020425!16s%2Fg%2F1hfbhn8sm?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D"
+                href="https://www.google.com/maps/place/Depozit24+-+Spatii+depozitare%2Fparcare+rulote/@44.5469393,26.1483676,19.13z/data=!4m6!3m5!1s0x40b21d00412b66f9:0xc6c5d1bd05b6a706!8m2!3d44.5468988!4d26.1486777!16s%2Fg%2F11w95sn3_9?entry=ttu&g_ep=EgoyMDI2MDMzMS4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackExternalLink('https://www.google.com/maps', t('contact.getDirections'))}
@@ -260,14 +293,14 @@ export default function ContactPage() {
             {/* Google Maps Embed */}
             <div className="rounded-2xl overflow-hidden shadow-xl border border-industrial-200" style={{ height: '500px' }}>
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1424.5673944487808!2d26.101946175571584!3d44.43039726076679!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff3e31e93745%3A0x429b14c5aaab2df1!2sSt.%20Anthony%E2%80%99s%20Church!5e0!3m2!1sen!2sro!4v1763372619800!5m2!1sen!2sro" 
+                src="https://www.google.com/maps?q=DJ100+3,+077180+Tunari&output=embed"
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
                 allowFullScreen 
                 loading="lazy" 
                 referrerPolicy="no-referrer-when-downgrade"
-                title="BoXpert Location - St. Anthony's Church"
+                title="BoXpert Location - DJ100 3, 077180 Tunari"
               />
             </div>
 
@@ -277,8 +310,7 @@ export default function ContactPage() {
                 <MapPin className="w-8 h-8 text-primary mx-auto mb-3" />
                 <h3 className="font-semibold mb-2">{t('contact.address')}</h3>
                 <p className="text-sm text-industrial-600">
-                  St. Anthony&apos;s Church Area<br />
-                  Bucharest, Romania
+                  DJ100 3, 077180 Tunari
                 </p>
               </div>
               <div className="bg-white p-6 rounded-xl shadow-sm text-center">

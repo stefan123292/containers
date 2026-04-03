@@ -23,9 +23,11 @@ export function Container3D({ autoRotate = false }: Container3DProps) {
   
   // Container dimensions based on size
   const dimensions = {
-    '20ft': { width: 6, height: 2.6, depth: 2.4 },
-    '40ft': { width: 12, height: 2.6, depth: 2.4 },
-    '40ft-hc': { width: 12, height: 2.9, depth: 2.4 },
+    '6x3': { width: 5.95, height: 2.8, depth: 3.0 },
+    '6x2_5': { width: 5.95, height: 2.8, depth: 2.5 },
+    '2x2': { width: 1.95, height: 2.8, depth: 2.0 },
+    '4x2': { width: 3.95, height: 2.8, depth: 2.0 },
+    '9x3': { width: 8.95, height: 2.8, depth: 3.0 },
   }[size];
   
   return (

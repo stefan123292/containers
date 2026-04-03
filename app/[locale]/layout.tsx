@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import { Suspense } from "react";
 import "../globals.css";
 import { Header } from "@/components/layout/Header";
@@ -19,9 +19,9 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const spaceGrotesk = Space_Grotesk({ 
+const montserrat = Montserrat({ 
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-montserrat",
 });
 
 export async function generateMetadata({ params }: { params: { locale: Locale } }): Promise<Metadata> {
@@ -43,7 +43,7 @@ export default async function LocaleLayout({
   const locale = params?.locale || defaultLocale;
 
   return (
-    <html lang={locale} className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang={locale} className={`${inter.variable} ${montserrat.variable}`}>
       <body className="font-sans">
         <StructuredData locale={locale} type="Organization" />
         <StructuredData locale={locale} type="WebSite" />

@@ -9,10 +9,10 @@ export function FloatingActions() {
   const { t } = useTranslations();
   const [isOpen, setIsOpen] = useState(false);
   
-  const phoneNumber = '1234567890'; // Replace with actual phone number
-  const whatsappNumber = '1234567890'; // Replace with actual WhatsApp number
+  const phoneNumber = '40774957340'; // Replace with actual phone number
+  const whatsappNumber = '40774957340'; // Replace with actual WhatsApp number
   const whatsappMessage = t('floatingActions.whatsappMessage');
-  const googleMapsReviewUrl = 'https://www.google.com/maps/place/St.+Anthony%E2%80%99s+Church/@44.4303973,26.1019462,18z/data=!4m6!3m5!1s0x40b1ff3e31e93745:0x429b14c5aaab2df1!8m2!3d44.4301036!4d26.1020425!16s%2Fg%2F1hfbhn8sm?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D';
+  const googleMapsReviewUrl = 'https://www.google.com/maps/place/Depozit24+-+Spatii+depozitare%2Fparcare+rulote/@44.5469393,26.1483676,19.13z/data=!4m6!3m5!1s0x40b21d00412b66f9:0xc6c5d1bd05b6a706!8m2!3d44.5468988!4d26.1486777!16s%2Fg%2F11w95sn3_9?entry=ttu&g_ep=EgoyMDI2MDMzMS4wIKXMDSoASAFQAw%3D%3D';
   
   const handleWhatsAppClick = () => {
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;

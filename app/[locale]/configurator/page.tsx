@@ -10,14 +10,14 @@ export default function ConfiguratorPage() {
   return (
     <>
       <StructuredData locale={locale} type="Product" />
-      <div className="h-screen flex flex-col md:flex-row">
+      <div className="min-h-screen flex flex-col md:h-screen md:flex-row">
       {/* Photo Viewer */}
-      <div className="flex-1 h-1/2 md:h-full">
+      <div className="h-[42vh] md:flex-1 md:h-full">
         <PhotoViewer />
       </div>
 
       {/* Configuration Panel */}
-      <div className="w-full md:w-[480px] h-1/2 md:h-full overflow-hidden">
+      <div className="w-full flex-1 md:w-[480px] md:h-full overflow-hidden">
         <ConfiguratorPanel />
       </div>
     </div>

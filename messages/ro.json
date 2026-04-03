@@ -31,7 +31,7 @@
     "cta": "Începe configurarea!",
     "items": {
       "preview": {
-        "title": "3D Real-Time Preview",
+        "title": "Configurator în timp real",
         "description": "Configurarea și ofertă în timp real (cu excepția personalizărilor care nu se regăsesc în listele standard) Crează containerul de care ai nevoie, cu toate elementele necesare proiectului tău si obține o oferta în timp real!"
       },
       "customization": {
@@ -92,7 +92,7 @@
   },
   "cta": {
     "title": "Gata să construiești containerul tău personalizat?",
-    "subtitle": "Începe să proiectezi cu configuratorul nostru 3D sau vorbește cu experții noștri pentru a discuta cerințele tale specifice.",
+    "subtitle": "Începe să proiectezi cu configuratorul nostru în timp real sau vorbește cu experții noștri pentru a discuta cerințele tale specifice.",
     "launchConfigurator": "Lansează configuratorul",
     "callUs": "Sună-ne acum",
     "freeConsultation": "Consultare gratuită",
@@ -127,7 +127,7 @@
     "story": {
       "title": "Povestea noastră",
       "p1": "Fondată în 2008, BoXpert a început cu o misiune simplă: să revoluționeze modul în care oamenii gândesc construcția modulară. Ceea ce a început ca o operațiune mică cu câteva containere a crescut într-un furnizor de top al soluțiilor modulare personalizabile.",
-      "p2": "Astăzi, combinăm tehnologia 3D de ultimă generație cu meșteșugul tradițional pentru a livra containere care nu sunt doar funcționale, ci și frumos proiectate și perfect adaptate nevoilor unice ale fiecărui client.",
+      "p2": "Astăzi, combinăm tehnologia configuratorului în timp real de ultimă generație cu meșteșugul tradițional pentru a livra containere care nu sunt doar funcționale, ci și frumos proiectate și perfect adaptate nevoilor unice ale fiecărui client.",
       "p3": "Cu peste 500 de proiecte finalizate și un angajament față de durabilitate, suntem mândri să fim în fruntea revoluției construcției modulare."
     },
     "values": {
@@ -179,6 +179,9 @@
     "message": "Mesaj *",
     "messagePlaceholder": "Spune-ne despre proiectul tău...",
     "send": "Trimite mesajul",
+    "formSending": "Se trimite...",
+    "formSuccess": "Mesajul a fost trimis. Te contactăm în curând.",
+    "formError": "Nu am putut trimite mesajul. Încearcă din nou sau scrie-ne la contact@boxpert.ro",
     "visitLocation": "Vizitează locația noastră",
     "locationSubtitle": "Vino să vezi showroom-ul nostru de containere și discută proiectul tău în persoană",
     "getDirections": "Obține direcții și lasă o recenzie ⭐",
@@ -203,7 +206,7 @@
     "support24": "Suport 24/7",
     "support24Desc": "Întotdeauna aici să te ajutăm",
     "cantFind": "Nu găsești ce cauți?",
-    "cantFindDesc": "Fiecare container poate fi complet personalizat. Folosește configuratorul nostru 3D pentru a-ți proiecta soluția perfectă.",
+    "cantFindDesc": "Fiecare container poate fi complet personalizat. Folosește configuratorul nostru în timp real pentru a-ți proiecta soluția perfectă.",
     "startCustom": "Începe configurarea personalizată"
   },
   "portfolio": {
@@ -214,7 +217,7 @@
     "satisfactionRate": "Rată de satisfacție",
     "yearsExperience": "Ani experiență",
     "readyToCreate": "Gata să-ți creezi propriul?",
-    "readyToCreateDesc": "Începe să-ți proiectezi soluția de containere personalizate astăzi cu configuratorul nostru interactiv 3D.",
+    "readyToCreateDesc": "Începe să-ți proiectezi soluția de containere personalizate astăzi cu configuratorul nostru interactiv în timp real.",
     "startConfiguring": "Începe configurarea"
   },
   "reviewPrompt": {
@@ -248,5 +251,89 @@
     "reject": "Respinge",
     "learnMore": "Află mai multe",
     "privacyPolicy": "Politica de confidențialitate"
+  },
+  "configurator": {
+    "currentConfiguration": "Configurarea curentă",
+    "panel": {
+      "title": "Configurează containerul tău",
+      "subtitle": "Personalizeaza fiecare detaliu și obține prețul în timp real",
+      "estimatedPrice": "Preț estimat:",
+      "requestQuote": "Solicită ofertă",
+      "requestHint": "Cererea o primim pe mail/whatsapp și revenim cu un răspuns în cel mai scurt timp."
+    },
+    "tabs": {
+      "size": "Mărime",
+      "exterior": "Exterior",
+      "interior": "Interior",
+      "details": "Detalii"
+    },
+    "summary": {
+      "size": "Mărime:",
+      "color": "Culoare:",
+      "windows": "Geamuri:",
+      "door": "Usa:"
+    },
+    "colors": {
+      "anthracite": "Gri Antracit",
+      "white": "Alb industrial",
+      "whiteShort": "Alb"
+    },
+    "size": {
+      "title": "Mărimea containerului",
+      "options": {
+        "6x3": { "description": "Container standard, perfect pentru birou, locuit sau depozitare" },
+        "6x2_5": { "description": "Container standard, potrivit pentru diverse proiecte" },
+        "2x2": { "description": "Container de dimensiuni mai mici, perfect pentru cabine de pază, chioșc" },
+        "4x2": { "description": "Container încăpător, potrivit pentru birou mobil, vestiar muncitori" },
+        "9x3": { "description": "Container de dimensiuni mari, potrivit pentru spațiu comercial, locuință modulară" }
+      }
+    },
+    "exterior": {
+      "colorTitle": "Culoarea exterioara",
+      "extraDoors": "Uși extra",
+      "extraWindows": "Ferestre extra",
+      "add": "Adaugă",
+      "maxDoors": "Maxim 5 uși",
+      "maxWindows": "Maxim 5 ferestre",
+      "extraDoorPrice": "Preț ușă exterior extra",
+      "extraWindowPrice": "Preț fereastră extra",
+      "addedModel": "Model adăugat",
+      "defaultDoorModel": "Usa standart (90x200 cm)",
+      "defaultWindowModel": "Fereastră standard (100x100 cm)",
+      "noDoors": "Nu ai adăugat încă uși",
+      "noWindows": "Nu ai adăugat încă ferestre"
+    },
+    "interior": {
+      "title": "Opțiuni și finisaje",
+      "electrical": "Instalație electrică",
+      "electricalDescription": "Cablaj complet, prize și iluminare",
+      "plumbing": "Instalația sanitară",
+      "plumbingDescription": "Pregătire pentru chiuvetă, WC și duș",
+      "finish": "Finisaj interior",
+      "none": "Fără",
+      "partition": "Perete despărțitor cu ușă PVC",
+      "sink": "Chiuvetă",
+      "wc": "WC",
+      "shower": "Cabină Duș",
+      "stairs": "Scară cu balustradă",
+      "terrace": "Terasă cu balustrade",
+      "flooring": "Pardoseală",
+      "linoleum": "Linoleum",
+      "parquet": "Parchet (Preț în dependență de model)",
+      "extraMessageLabel": "Mesaj/Opțiuni extra:",
+      "extraMessagePlaceholder": "Scrie opțiuni suplimentare pe care nu le găsești în meniu..."
+    },
+    "quoteModal": {
+      "title": "Date de contact",
+      "subtitle": "Completează datele pentru a trimite cererea de ofertă la contact@boxpert.ro",
+      "name": "Nume complet *",
+      "email": "Email *",
+      "phone": "Telefon",
+      "submit": "Trimite cererea",
+      "cancel": "Anulează",
+      "sending": "Se trimite...",
+      "success": "Cererea a fost trimisă. Verifică emailul pentru confirmare.",
+      "error": "Nu am putut trimite cererea. Încearcă din nou sau scrie-ne la contact@boxpert.ro"
+    }
   }
 }

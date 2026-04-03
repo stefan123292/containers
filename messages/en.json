@@ -31,7 +31,7 @@
     "cta": "Start configuring!",
     "items": {
       "preview": {
-        "title": "3D Real-Time Preview",
+        "title": "Real-Time Configurator",
         "description": "Real-time configuration and quote (except for customizations that are not in the standard lists). Create the container you need with all the elements necessary for your project and get a real-time quote!"
       },
       "customization": {
@@ -92,7 +92,7 @@
   },
   "cta": {
     "title": "Ready to build your custom container?",
-    "subtitle": "Start designing with our 3D configurator or speak with our experts to discuss your specific requirements.",
+    "subtitle": "Start designing with our real-time configurator or speak with our experts to discuss your specific requirements.",
     "launchConfigurator": "Launch Configurator",
     "callUs": "Call Us Now",
     "freeConsultation": "Free Consultation",
@@ -127,7 +127,7 @@
     "story": {
       "title": "Our Story",
       "p1": "Founded in 2008, BoXpert began with a simple mission: to revolutionize the way people think about modular construction. What started as a small operation with a handful of containers has grown into a leading provider of customizable modular solutions.",
-      "p2": "Today, we combine cutting-edge 3D technology with traditional craftsmanship to deliver containers that are not just functional, but beautifully designed and perfectly suited to each client's unique needs.",
+      "p2": "Today, we combine cutting-edge real-time configurator technology with traditional craftsmanship to deliver containers that are not just functional, but beautifully designed and perfectly suited to each client's unique needs.",
       "p3": "With over 500 completed projects and a commitment to sustainability, we're proud to be at the forefront of the modular construction revolution."
     },
     "values": {
@@ -179,6 +179,9 @@
     "message": "Message *",
     "messagePlaceholder": "Tell us about your project...",
     "send": "Send Message",
+    "formSending": "Sending...",
+    "formSuccess": "Your message was sent. We'll get back to you soon.",
+    "formError": "We couldn't send your message. Please try again or email contact@boxpert.ro",
     "visitLocation": "Visit Our Location",
     "locationSubtitle": "Come see our container showroom and discuss your project in person",
     "getDirections": "Get Directions & Leave a Review ⭐",
@@ -203,7 +206,7 @@
     "support24": "24/7 Support",
     "support24Desc": "Always here to help you",
     "cantFind": "Can't Find What You're Looking For?",
-    "cantFindDesc": "Every container can be fully customized. Use our 3D configurator to design your perfect solution.",
+    "cantFindDesc": "Every container can be fully customized. Use our real-time configurator to design your perfect solution.",
     "startCustom": "Start Custom Configuration"
   },
   "portfolio": {
@@ -214,7 +217,7 @@
     "satisfactionRate": "Satisfaction Rate",
     "yearsExperience": "Years Experience",
     "readyToCreate": "Ready to Create Your Own?",
-    "readyToCreateDesc": "Start designing your custom container solution today with our interactive 3D configurator.",
+    "readyToCreateDesc": "Start designing your custom container solution today with our interactive real-time configurator.",
     "startConfiguring": "Start Configuring"
   },
   "reviewPrompt": {
@@ -248,5 +251,89 @@
     "reject": "Reject",
     "learnMore": "Learn more",
     "privacyPolicy": "Privacy Policy"
+  },
+  "configurator": {
+    "currentConfiguration": "Current Configuration",
+    "panel": {
+      "title": "Configure Your Container",
+      "subtitle": "Customize every detail and get the price in real time",
+      "estimatedPrice": "Estimated Price:",
+      "requestQuote": "Request Quote",
+      "requestHint": "We receive your request by email/whatsapp and get back to you as soon as possible."
+    },
+    "tabs": {
+      "size": "Size",
+      "exterior": "Exterior",
+      "interior": "Interior",
+      "details": "Details"
+    },
+    "summary": {
+      "size": "Size:",
+      "color": "Color:",
+      "windows": "Windows:",
+      "door": "Door:"
+    },
+    "colors": {
+      "anthracite": "Anthracite Gray",
+      "white": "Industrial White",
+      "whiteShort": "White"
+    },
+    "size": {
+      "title": "Container Size",
+      "options": {
+        "6x3": { "description": "Standard container, perfect for office, living or storage" },
+        "6x2_5": { "description": "Standard container, suitable for various projects" },
+        "2x2": { "description": "Smaller container, perfect for guard cabins and kiosks" },
+        "4x2": { "description": "Spacious container, suitable for mobile office and workers locker room" },
+        "9x3": { "description": "Large container, suitable for commercial space and modular housing" }
+      }
+    },
+    "exterior": {
+      "colorTitle": "Exterior Color",
+      "extraDoors": "Extra Doors",
+      "extraWindows": "Extra Windows",
+      "add": "Add",
+      "maxDoors": "Maximum 5 doors",
+      "maxWindows": "Maximum 5 windows",
+      "extraDoorPrice": "Extra exterior door price",
+      "extraWindowPrice": "Extra window price",
+      "addedModel": "Added model",
+      "defaultDoorModel": "Standard door (90x200 cm)",
+      "defaultWindowModel": "Standard window (100x100 cm)",
+      "noDoors": "No extra doors added yet",
+      "noWindows": "No extra windows added yet"
+    },
+    "interior": {
+      "title": "Options and Finishes",
+      "electrical": "Electrical installation",
+      "electricalDescription": "Complete wiring, outlets and lighting",
+      "plumbing": "Sanitary installation",
+      "plumbingDescription": "Preparation for sink, WC and shower",
+      "finish": "Interior Finish",
+      "none": "None",
+      "partition": "Partition wall with PVC door",
+      "sink": "Sink",
+      "wc": "WC",
+      "shower": "Shower cabin",
+      "stairs": "Stairs with railing",
+      "terrace": "Terrace with railings",
+      "flooring": "Flooring",
+      "linoleum": "Linoleum",
+      "parquet": "Parquet (Price depends on model)",
+      "extraMessageLabel": "Message/Extra options:",
+      "extraMessagePlaceholder": "Write additional options you cannot find in the menu..."
+    },
+    "quoteModal": {
+      "title": "Contact details",
+      "subtitle": "Fill in your details to send your quote request to contact@boxpert.ro",
+      "name": "Full name *",
+      "email": "Email *",
+      "phone": "Phone",
+      "submit": "Send request",
+      "cancel": "Cancel",
+      "sending": "Sending...",
+      "success": "Your request was sent. Check your email for confirmation.",
+      "error": "We couldn't send your request. Please try again or email contact@boxpert.ro"
+    }
   }
 }

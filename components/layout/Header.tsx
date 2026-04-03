@@ -27,13 +27,13 @@ export function Header() {
       <div className="hidden md:block bg-industrial-800 border-b border-industrial-700">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-end gap-6 text-sm text-industrial-300">
-            <a href="tel:+1234567890" className="flex items-center gap-2 hover:text-primary transition-colors">
+            <a href="tel:+40774957340" className="flex items-center gap-2 hover:text-primary transition-colors">
               <Phone className="w-4 h-4" />
-              <span>+1 (234) 567-890</span>
+              <span>+40774957340</span>
             </a>
-            <a href="mailto:info@containers.com" className="flex items-center gap-2 hover:text-primary transition-colors">
+            <a href="mailto:contact@boxpert.ro" className="flex items-center gap-2 hover:text-primary transition-colors">
               <Mail className="w-4 h-4" />
-              <span>info@containers.com</span>
+              <span>contact@boxpert.ro</span>
             </a>
           </div>
         </div>
@@ -86,13 +86,13 @@ export function Header() {
             {/* Top bar info in mobile menu */}
             <div className="border-b border-industrial-700 pb-4 mb-4">
               <div className="flex flex-col gap-3 text-sm text-industrial-300">
-                <a href="tel:+1234567890" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <a href="tel:+40774957340" className="flex items-center gap-2 hover:text-primary transition-colors">
                   <Phone className="w-4 h-4" />
-                  <span>+1 (234) 567-890</span>
+                  <span>+40774957340</span>
                 </a>
-                <a href="mailto:info@containers.com" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <a href="mailto:contact@boxpert.ro" className="flex items-center gap-2 hover:text-primary transition-colors">
                   <Mail className="w-4 h-4" />
-                  <span>info@containers.com</span>
+                  <span>contact@boxpert.ro</span>
                 </a>
               </div>
             </div>

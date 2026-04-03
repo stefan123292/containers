@@ -8,7 +8,7 @@ const testimonials = [
     name: 'Sarah Johnson',
     role: 'Homeowner',
     company: '',
-    content: 'The 3D configurator made it so easy to design my dream guest house. The team was professional and the quality exceeded my expectations!',
+    content: 'The real-time configurator made it so easy to design my dream guest house. The team was professional and the quality exceeded my expectations!',
     rating: 5,
     image: '',
   },

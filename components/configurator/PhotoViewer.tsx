@@ -4,13 +4,16 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useConfiguratorStore } from '@/lib/store/configuratorStore';
 import { ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
+import { useTranslations } from '@/hooks/useTranslations';
 
 type ViewType = 'exterior' | 'interior' | 'details';
 
 export function PhotoViewer() {
-  const { size, exteriorColor, windows, doors, hasInsulation } = useConfiguratorStore();
+  const { size, exteriorColor, windows, doors } = useConfiguratorStore();
   const [currentView, setCurrentView] = useState<ViewType>('exterior');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { t } = useTranslations();
+
 
   // Map configuration to image paths
   const getImages = (): string[] => {
@@ -28,9 +31,9 @@ export function PhotoViewer() {
         `/images/containers/${size}-${colorName}-angle.jpg`,
       ],
       interior: [
-        `/images/containers/interior-${hasInsulation ? 'insulated' : 'standard'}-1.jpg`,
-        `/images/containers/interior-${hasInsulation ? 'insulated' : 'standard'}-2.jpg`,
-        `/images/containers/interior-${hasInsulation ? 'insulated' : 'standard'}-3.jpg`,
+        `/images/containers/interior-standard-1.jpg`,
+        `/images/containers/interior-standard-2.jpg`,
+        `/images/containers/interior-standard-3.jpg`,
       ],
       details: [
         `/images/containers/door-detail.jpg`,
@@ -65,10 +68,29 @@ export function PhotoViewer() {
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
+  const getSizeLabel = (value: string): string => {
+    const sizeMap: Record<string, string> = {
+      '6x3': '6 x 3 m',
+      '6x2_5': '6 x 2,5 m',
+      '2x2': '2 x 2 m',
+      '4x2': '4 x 2 m',
+      '9x3': '9 x 3 m',
+    };
+    return sizeMap[value] || value;
+  };
+
+  const getColorLabel = (hex: string): string => {
+    const colorLabels: Record<string, string> = {
+      '#2D3039': t('configurator.colors.anthracite'),
+      '#F3F4F6': t('configurator.colors.whiteShort'),
+    };
+    return colorLabels[hex] || getColorName(hex);
+  };
+
   const tabs = [
-    { id: 'exterior' as ViewType, label: 'Exterior View' },
-    { id: 'interior' as ViewType, label: 'Interior View' },
-    { id: 'details' as ViewType, label: 'Details' },
+    { id: 'exterior' as ViewType, label: t('configurator.tabs.exterior') },
+    { id: 'interior' as ViewType, label: t('configurator.tabs.interior') },
+    { id: 'details' as ViewType, label: t('configurator.tabs.details') },
   ];
 
   return (
@@ -147,38 +169,30 @@ export function PhotoViewer() {
         </button>
 
         {/* Configuration Info Overlay */}
-        <div className="absolute top-4 left-4 bg-industrial-800/90 backdrop-blur-sm text-white rounded-lg p-4 z-10 max-w-xs">
-          <h3 className="font-semibold mb-2">Current Configuration</h3>
+        <div className="hidden md:block absolute top-4 left-4 bg-industrial-800/90 backdrop-blur-sm text-white rounded-lg p-4 z-10 max-w-xs">
+          <h3 className="font-semibold mb-2">{t('configurator.currentConfiguration')}</h3>
           <div className="space-y-1 text-sm text-industrial-300">
             <div className="flex justify-between">
-              <span>Size:</span>
-              <span className="font-medium text-white">{size}</span>
+              <span>{t('configurator.summary.size')}</span>
+              <span className="font-medium text-white">{getSizeLabel(size)}</span>
             </div>
             <div className="flex justify-between">
-              <span>Color:</span>
+              <span>{t('configurator.summary.color')}</span>
               <div className="flex items-center gap-2">
                 <div
                   className="w-4 h-4 rounded border border-white/30"
                   style={{ backgroundColor: exteriorColor }}
                 />
-                <span className="font-medium text-white capitalize">
-                  {getColorName(exteriorColor)}
-                </span>
+                <span className="font-medium text-white capitalize">{getColorLabel(exteriorColor)}</span>
               </div>
             </div>
             <div className="flex justify-between">
-              <span>Windows:</span>
+              <span>{t('configurator.summary.windows')}</span>
               <span className="font-medium text-white">{windows.length}</span>
             </div>
             <div className="flex justify-between">
-              <span>Doors:</span>
+              <span>{t('configurator.summary.door')}</span>
               <span className="font-medium text-white">{doors.length}</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Insulation:</span>
-              <span className="font-medium text-white">
-                {hasInsulation ? 'Yes' : 'No'}
-              </span>
             </div>
           </div>
         </div>

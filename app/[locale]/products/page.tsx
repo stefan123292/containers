@@ -274,11 +274,11 @@ export default async function ProductsPage({
                   {/* Price */}
                   <div className="flex items-baseline gap-2 mb-4">
                     <span className="text-2xl font-bold text-industrial-900">
-                      ${product.price.toLocaleString()}
+                      €{product.price.toLocaleString()} +TVA
                     </span>
                     {product.oldPrice && (
                       <span className="text-sm text-industrial-500 line-through">
-                        ${product.oldPrice.toLocaleString()}
+                        €{product.oldPrice.toLocaleString()} +TVA
                       </span>
                     )}
                   </div>

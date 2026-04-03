@@ -41,7 +41,7 @@ export function CTASection() {
             </Link>
             
             <a
-              href="tel:+1234567890"
+              href="tel:+40774957340"
               onClick={() => trackButtonClick(t('cta.callUs'), 'cta_section')}
               className="group px-8 py-4 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 rounded-lg font-semibold text-lg hover:bg-white/20 transition-all flex items-center gap-2"
             >

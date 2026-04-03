@@ -94,26 +94,34 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <span>123 Industrial Park Ave<br />Manufacturing District<br />New York, NY 10001</span>
+                <a
+                  href="https://www.google.com/maps/place/Depozit24+-+Spatii+depozitare%2Fparcare+rulote/@44.5469393,26.1483676,19.13z/data=!4m6!3m5!1s0x40b21d00412b66f9:0xc6c5d1bd05b6a706!8m2!3d44.5468988!4d26.1486777!16s%2Fg%2F11w95sn3_9?entry=ttu&g_ep=EgoyMDI2MDMzMS4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackExternalLink('https://www.google.com/maps', 'Footer Location')}
+                  className="hover:text-primary transition-colors"
+                >
+                  DJ100 3, 077180 Tunari
+                </a>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" />
                 <a 
-                  href="tel:+1234567890" 
+                  href="tel:+40774957340" 
                   onClick={() => trackButtonClick('Phone', 'footer')}
                   className="hover:text-primary transition-colors"
                 >
-                  +1 (234) 567-890
+                  +40774957340
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0" />
                 <a 
-                  href="mailto:info@containers.com" 
+                  href="mailto:contact@boxpert.ro" 
                   onClick={() => trackButtonClick('Email', 'footer')}
                   className="hover:text-primary transition-colors"
                 >
-                  info@containers.com
+                  contact@boxpert.ro
                 </a>
               </li>
             </ul>

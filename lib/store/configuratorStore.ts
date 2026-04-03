@@ -15,92 +15,111 @@ interface ConfiguratorState extends ContainerConfiguration {
   setInteriorFinish: (finish: ContainerConfiguration['interiorFinish']) => void;
   setFlooring: (flooring: ContainerConfiguration['flooring']) => void;
   toggleElectrical: () => void;
-  toggleHVAC: () => void;
+  togglePlumbing: () => void;
+  setExtraMessage: (message: string) => void;
   calculatePrice: () => number;
   resetConfiguration: () => void;
 }
 
 const initialConfiguration: ContainerConfiguration = {
-  size: '20ft',
-  exteriorColor: '#2D3039', // Anthracite gray
-  doors: [],
-  windows: [],
+  size: '6x3',
+  exteriorColor: '#F3F4F6', // White
+  doors: [
+    {
+      id: 'default-door-1',
+      type: 'standard',
+      position: { x: 0, y: 0, z: 0 },
+      wall: 'front',
+    },
+  ],
+  windows: [
+    {
+      id: 'default-window-1',
+      type: 'standard',
+      position: { x: 0, y: 0, z: 0 },
+      wall: 'left',
+      size: 'medium',
+    },
+  ],
   hasInsulation: false,
   interiorFinish: 'none',
   flooring: 'none',
   electrical: false,
-  hvac: false,
+  plumbing: false,
+  extraMessage: '',
 };
 
-export const useConfiguratorStore = create<ConfiguratorState>((set, get) => ({
+export const useConfiguratorStore = create<ConfiguratorState>((set: any, get: any) => ({
   ...initialConfiguration,
 
-  setSize: (size) => set({ size }),
+  setSize: (size: ContainerConfiguration['size']) => set({ size }),
   
-  setExteriorColor: (color) => set({ exteriorColor: color }),
+  setExteriorColor: (color: string) => set({ exteriorColor: color }),
   
-  addDoor: (door) => set((state) => ({ 
+  addDoor: (door: Door) => set((state: ConfiguratorState) => ({ 
     doors: [...state.doors, door] 
   })),
   
-  removeDoor: (doorId) => set((state) => ({ 
-    doors: state.doors.filter(d => d.id !== doorId) 
+  removeDoor: (doorId: string) => set((state: ConfiguratorState) => ({ 
+    doors: state.doors.filter((d: Door) => d.id !== doorId) 
   })),
   
-  updateDoor: (doorId, updates) => set((state) => ({
-    doors: state.doors.map(d => d.id === doorId ? { ...d, ...updates } : d)
+  updateDoor: (doorId: string, updates: Partial<Door>) => set((state: ConfiguratorState) => ({
+    doors: state.doors.map((d: Door) => d.id === doorId ? { ...d, ...updates } : d)
   })),
   
-  addWindow: (window) => set((state) => ({ 
+  addWindow: (window: Window) => set((state: ConfiguratorState) => ({ 
     windows: [...state.windows, window] 
   })),
   
-  removeWindow: (windowId) => set((state) => ({ 
-    windows: state.windows.filter(w => w.id !== windowId) 
+  removeWindow: (windowId: string) => set((state: ConfiguratorState) => ({ 
+    windows: state.windows.filter((w: Window) => w.id !== windowId) 
   })),
   
-  updateWindow: (windowId, updates) => set((state) => ({
-    windows: state.windows.map(w => w.id === windowId ? { ...w, ...updates } : w)
+  updateWindow: (windowId: string, updates: Partial<Window>) => set((state: ConfiguratorState) => ({
+    windows: state.windows.map((w: Window) => w.id === windowId ? { ...w, ...updates } : w)
   })),
   
-  toggleInsulation: () => set((state) => ({ 
+  toggleInsulation: () => set((state: ConfiguratorState) => ({ 
     hasInsulation: !state.hasInsulation 
   })),
   
-  setInteriorFinish: (finish) => set({ interiorFinish: finish }),
+  setInteriorFinish: (finish: ContainerConfiguration['interiorFinish']) => set({ interiorFinish: finish }),
   
-  setFlooring: (flooring) => set({ flooring }),
+  setFlooring: (flooring: ContainerConfiguration['flooring']) => set({ flooring }),
   
-  toggleElectrical: () => set((state) => ({ 
+  toggleElectrical: () => set((state: ConfiguratorState) => ({ 
     electrical: !state.electrical 
   })),
   
-  toggleHVAC: () => set((state) => ({ 
-    hvac: !state.hvac 
+  togglePlumbing: () => set((state: ConfiguratorState) => ({ 
+    plumbing: !state.plumbing
   })),
+
+  setExtraMessage: (message: string) => set({ extraMessage: message }),
   
   calculatePrice: () => {
-    const state = get();
+    const state: ConfiguratorState = get();
     const pricing = DEFAULT_PRICING;
-    
-    let total = pricing.basePrice * pricing.sizeMultiplier[state.size];
-    
-    // Add door costs
-    state.doors.forEach(door => {
-      total += pricing.doorPrices[door.type];
-    });
-    
-    // Add window costs
-    state.windows.forEach(window => {
-      total += pricing.windowPrices[window.type];
-    });
-    
-    // Add optional features
+
+    const isWhite = state.exteriorColor.toLowerCase() === '#f3f4f6';
+    let total = isWhite
+      ? pricing.basePriceBySizeColor[state.size].white
+      : pricing.basePriceBySizeColor[state.size].grey;
+
+    // Base includes 1 door and 1 standard window
+    const extraDoors = Math.max(0, state.doors.length - 1);
+    const extraWindows = Math.max(0, state.windows.length - 1);
+
+    total += extraDoors * pricing.extraDoorPriceBySize[state.size];
+    total += extraWindows * pricing.extraWindowPriceBySize[state.size];
+
+    // Optional features
     if (state.hasInsulation) total += pricing.insulationPrice;
-    total += pricing.interiorFinishPrices[state.interiorFinish];
-    total += pricing.flooringPrices[state.flooring];
-    if (state.electrical) total += pricing.electricalPrice;
-    if (state.hvac) total += pricing.hvacPrice;
+    total += pricing.interiorFinishPricesBySize[state.size][state.interiorFinish] || 0;
+    total += pricing.flooringPricesBySize[state.size][state.flooring] || 0;
+    if (state.electrical) total += pricing.electricalPriceBySize[state.size];
+    if (state.plumbing) total += pricing.plumbingPriceBySize[state.size];
     
     return Math.round(total);
   },

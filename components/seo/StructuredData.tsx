@@ -23,12 +23,14 @@ export function StructuredData({ locale, type = 'Organization', data }: Structur
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'RO',
-      addressLocality: 'București',
-      addressRegion: 'București',
+      streetAddress: 'DJ100 3',
+      postalCode: '077180',
+      addressLocality: 'Tunari',
+      addressRegion: 'Ilfov',
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+40-XXX-XXX-XXX',
+      telephone: '+40774957340',
       contactType: 'customer service',
       areaServed: 'RO',
       availableLanguage: ['Romanian', 'English'],
@@ -47,8 +49,8 @@ export function StructuredData({ locale, type = 'Organization', data }: Structur
     name: 'BoXpert',
     url: baseUrl,
     description: locale === 'ro'
-      ? 'Containere modulare personalizate cu configurator 3D. Spații locative, birouri, cabine de pază, depozite și multe altele.'
-      : 'Custom modular containers with 3D configurator. Living spaces, offices, guard cabins, storage and more.',
+      ? 'Containere modulare personalizate cu configurator în timp real. Spații locative, birouri, cabine de pază, depozite și multe altele.'
+      : 'Custom modular containers with a real-time configurator. Living spaces, offices, guard cabins, storage and more.',
     inLanguage: locale === 'ro' ? 'ro-RO' : 'en-US',
     potentialAction: {
       '@type': 'SearchAction',
@@ -74,7 +76,7 @@ export function StructuredData({ locale, type = 'Organization', data }: Structur
     },
     offers: {
       '@type': 'AggregateOffer',
-      priceCurrency: 'RON',
+      priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
       url: `${baseUrl}/${locale}/products`,
     },
